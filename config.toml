@@ -1,0 +1,60 @@
+# The URL the site will be built for
+base_url = "https://metamehta.me"
+title = "Mukul Mehta"
+lang = "en"
+
+# Whether to automatically compile all Sass files in the sass directory
+compile_sass = true
+
+# Whether to do syntax highlighting
+# Theme can be customised by setting the `highlight_theme` variable to a theme supported by Zola
+highlight_code = true
+highlight_theme = "charcoal"
+theme = "sam"
+
+# Whether to build a search index to be used later on by a JavaScript library
+build_search_index = false
+
+check_external_links = "true"
+
+taxonomies = [
+    {name = "tags", rss = true}
+]
+
+[extra]
+# Put all your custom variables here
+show_word_count = true
+show_reading_time = true
+disqus_shortname = "https-metamehta-me"
+
+date_format = "%A %e %b, %Y"
+
+home = "home"
+
+sam_menu = [
+    { text = "about", link = "/about" },
+    { text = "posts", link = "/posts" },
+    { text = "t.i.l.", link = "/til" },
+    {text = "resume", link="/resume.pdf"}
+]
+
+sam_bottom_menu = true
+
+[extra.favicon]
+favicon_16x16 = "/favicons/favicon-16x16.png"
+favicon_32x32 = "/favicons/favicon-32x32.png"
+apple_touch_icon = "/favicons/apple-touch-icon.png"
+safari_pinned_tab = "/favicons/safari-pinned-tab.svg"
+webmanifest = "/favicons/site.webmanifest"
+
+[extra.analytics]
+google = "UA-177833136-1"
+
+[extra.youtube]
+video_id = "6dtA9ka5fj4"
+
+[extra.social]
+mail = "mailto:mukul.csiitkgp@gmail.com"
+twitter = "https://twitter.com/metamehta_"
+github = "https://github.com/mukul-mehta"
+facebook = "https://facebook.com/mukul.amehta"

@@ -1,0 +1,72 @@
+{% import "macros.html" as macros %}
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8"/>
+        <meta content="chrome=1" http-equiv="X-UA-Compatible"/>
+        <meta content="True" name="HandheldFriendly"/>
+        <meta content="320" name="MobileOptimized"/>
+        <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+        <meta content="no-referrer" name="referrer"/>
+        {% if config.extra.favicon.webmanifest %}
+            <link href='{{ config.extra.favicon.webmanifest }}' rel="manifest"/>
+        {% endif %}
+        {% if config.extra.favicon.safari_pinned_tab %}
+            <link color="#5bbad5" href='{{ config.extra.favicon.safari_pinned_tab }}' rel="mask-icon"/>
+        {% endif %}
+        {% if config.extra.favicon.favicon_16x16 %}
+            <link href='{{ config.extra.favicon.favicon_16x16 }}' rel="icon" sizes="16x16" type="image/png"/>
+        {% endif %}
+        {% if config.extra.favicon.favicon_32x32 %}
+            <link href='{{ config.extra.favicon.favicon_32x32 }}' rel="icon" sizes="32x32" type="image/png"/>
+        {% endif %}
+        {% if config.extra.favicon.apple_touch_icon %}
+            <link href='{{ config.extra.favicon.apple_touch_icon }}' rel="apple-touch-icon" sizes="180x180"/>
+        {% endif %}
+        <link href="{{ get_url(path='fonts.css') }}" rel="stylesheet"/>
+        <link href="{{ get_url(path='style.css') }}" rel="stylesheet"/>
+        <title>
+            {% block htmltitle %}
+                {{ config.title }}
+            {% endblock htmltitle %}
+        </title>
+        {% if config.generate_rss %}
+            <link href="{{ get_url(path='rss.xml') }}" rel="alternate" title="RSS" type="application/rss+xml"/>
+        {% endif %}
+        {% if config.extra.analytics.google %}
+            <script async src="https://www.googletagmanager.com/gtag/js?id={{ config.extra.analytics.google }}"></script>
+            <script type="text/javascript">
+                window.dataLayer = window.dataLayer || [];
+                function gtag() {
+                    dataLayer.push(arguments);
+                }
+                gtag("js", new Date());
+                gtag("config", "{{ config.extra.analytics.google }}");
+            </script>
+        {% endif %}
+    </head>
+    <body>
+        {% block body %}
+            <div class="section" id="splash">
+                {% if config.extra.sam_menu %}
+                    {% for link in config.extra.sam_menu %}
+                        <div class="big-link">
+                            <a href="{{ link.link }}">
+                                {{ link.text }}
+                            </a>
+                        </div>
+                    {% endfor %}
+                {% else %}
+                    {% for current in section.subsections %}
+                        {% set current = get_section(path=current) %}
+                        <div class="big-link">
+                            <a href="{{ current.permalink }}">
+                                {{ macros::title_or_last(component=current) }}
+                            </a>
+                        </div>
+                    {% endfor %}
+                {% endif %}
+            </div>
+        {% endblock body %}
+    </body>
+</html>

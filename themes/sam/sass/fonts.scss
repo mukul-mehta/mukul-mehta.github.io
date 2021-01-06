@@ -1,0 +1,27 @@
+@font-face {
+    font-family: 'Didact Gothic';
+    font-style: normal;
+    font-weight: 400;
+    src: local('Didact Gothic Regular'), local('DidactGothic-Regular'), url(fonts/DidactGothic-Regular.otf) format('opentype');
+}
+
+@font-face {
+    font-family: 'Rajdhani';
+    font-style: normal;
+    font-weight: 400;
+    src: local('Rajdhani Regular'), local('Rajdhani-Regular'), url(fonts/Rajdhani-Regular.ttf) format('truetype');
+}
+
+@font-face {
+    font-family: 'DankMono';
+    font-style: normal;
+    font-weight: 400;
+    src: local('Dank Mono'), local('DankMono NF'), url(fonts/DankMono.otf) format('opentype');
+}
+
+@font-face {
+    font-family: 'OperatorMono';
+    font-style: normal;
+    font-weight: 400;
+    src: local('Operator Mono'), url(fonts/OperatorMono.otf) format('opentype');
+}
