@@ -47,9 +47,6 @@ apple_touch_icon = "/favicons/apple-touch-icon.png"
 safari_pinned_tab = "/favicons/safari-pinned-tab.svg"
 webmanifest = "/favicons/site.webmanifest"
 
-[extra.analytics]
-google = "UA-177833136-1"
-
 [extra.youtube]
 video_id = "6dtA9ka5fj4"
 

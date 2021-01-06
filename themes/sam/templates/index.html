@@ -33,17 +33,6 @@
         {% if config.generate_rss %}
             <link href="{{ get_url(path='rss.xml') }}" rel="alternate" title="RSS" type="application/rss+xml"/>
         {% endif %}
-        {% if config.extra.analytics.google %}
-            <script async src="https://www.googletagmanager.com/gtag/js?id={{ config.extra.analytics.google }}"></script>
-            <script type="text/javascript">
-                window.dataLayer = window.dataLayer || [];
-                function gtag() {
-                    dataLayer.push(arguments);
-                }
-                gtag("js", new Date());
-                gtag("config", "{{ config.extra.analytics.google }}");
-            </script>
-        {% endif %}
     </head>
     <body>
         {% block body %}
