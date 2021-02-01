@@ -12,7 +12,7 @@ I'm Mukul Mehta, a pre-final year Computer Science & Engineering undergraduate a
 In my college, I'm a member of Kharagpur Open Source Society ([KOSS](https://kossiitkgp.org/)). We're a group of students who're passionate about FOSS software and ideas, and conduct workshops on campus introducing others to Git, Linux, Python and other tools.
 <br /><br />
 When programming and otherwise, my headphones are blasting my favourite Spotify playlists, with the 70s being my favourite era for music. I'm hooked to Pink Floyd (Obviously the greatest band of all time), Cream, The Police, Led Zeppelin and Sneha Khanwalkar Recently, I discovered a neo-psychedelic rock playlist on Spotify, with music from King Gizzard, Naxatras and Tame Impala and I've fallen in love!
-
+Here's a beautiful playlist from one of my favourite TV Shows!
 {{spotify_playlist(id = "285mXyyA1Vc4MSwH52YwwI")}}
 
 <br /><br />
