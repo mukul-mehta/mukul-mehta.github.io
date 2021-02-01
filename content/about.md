@@ -13,7 +13,7 @@ In my college, I'm a member of Kharagpur Open Source Society ([KOSS](https://kos
 <br /><br />
 When programming and otherwise, my headphones are blasting my favourite Spotify playlists, with the 70s being my favourite era for music. I'm hooked to Pink Floyd (Obviously the greatest band of all time), Cream, The Police, Led Zeppelin and Sneha Khanwalkar Recently, I discovered a neo-psychedelic rock playlist on Spotify, with music from King Gizzard, Naxatras and Tame Impala and I've fallen in love!
 
-{{spotify_playlist(id = "37i9dQZF1DX7k3T9O9bscd")}}
+{{spotify_playlist(id = "285mXyyA1Vc4MSwH52YwwI")}}
 
 <br /><br />
 
