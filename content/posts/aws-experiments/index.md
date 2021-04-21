@@ -93,7 +93,19 @@ I also create a route table, with both of these subnets and a internet gateway t
 
 ## Creating our test Flask app
 
-To begin, I'll use a simple hello world app. I'll keep iterating if I'm able to successfully deploy this first.
+To begin, I'll use a simple hello world app. I'll keep iterating if I'm able to successfully deploy this first
+
+Here's the repository: https://github.com/mukul-mehta/Flask-ECS-Adventures
+
+### Step 1: Pushing the image to ECR
+
+I've created a new private repository on AWS ECR called `flask-ecs`, to which I'll push my image. Once I'm done logging in, I build, tag and then push the image to the repository
+
+![Pushing image to ECR](ECR.jpg)
+
+
+
+
 
 
 
