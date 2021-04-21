@@ -82,7 +82,18 @@ The first step is creating a new VPC for our use.
 
 
 
-I'll create 2 new subnets inside the VPC. To use a elastic load balancer, we'll need atleast 2 subnets in different availability zones
+I'll create 2 new subnets inside the VPC. To use a elastic load balancer, we'll need atleast 2 subnets in different availability zones:
+
+- helloworld-public-1: CIDR 10.0.2.0/24 in ap-south-1a
+- Helloworld-public-2: CIDR 10.0.4.0/24 in ap-south-1b
+
+I also create a route table, with both of these subnets and a internet gateway that is attached to our VPC. Next, I'll setup a new flask application, dockerize it and create an ECS cluster.
+
+
+
+## Creating our test Flask app
+
+To begin, I'll use a simple hello world app. I'll keep iterating if I'm able to successfully deploy this first.
 
 
 
