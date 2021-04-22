@@ -149,13 +149,48 @@ Okay, this was my fault. Turns out I forgot to add a route in my routing table f
 
 ### Step 4: Create a new service in the ECS cluster
 
+#### 4.1: Create a new task definition
+
 Before this, I need to setup a task definition. The task definition is a recipe for the service and specifies the image and hardware requirements for the task. 
 
 
 In the task definition, I specify the URI of the container image (Which I pushed to ECR), a memory limit of 512MB and 512 CPU Units (Each CPU core is 1024 CPU units). I also need to add a port mapping, from 8000 in host to 8000 in the container, since my flask app is listening on port 8000 inside the container.
 
 
-Once we're done with creating with task definition, I need to create a service
+Once we're done with creating with task definition, I need to create a service using this task definition
+
+
+#### 4.2: Create a new load balancer
+
+Before I can create a new service, I need to setup an Application Load Balancer and a Target Group. For now, I'll setup a listener on port 80 instead of configuring a new certificate and setting up a HTTPS listener. 
+
+
+
+Setting up the ALB should be fairly straightforward. Add a listener on port 80, for HTTP traffic, select the right VPC and subnets and the default security group. Then, setup a new target group that is listening on port 80 and protocol set to HTTP1. On our simple flask app, I setup a health check endpoint `/health` that on success returns a status code of 200. We need a health check endpoint since the target group needs to know when a target is down. It sends requests to this health check endpoint every couple (5 AFAIK) minutes and if there are 2 consecutive failures (status code != 200), it marks a target as unhealthy. I don't register any targets right now, since we'll do that when we setup our service
+
+Now that the ALB is setup, I'll go back to creating a new service
+
+
+
+#### 4.3: Creating a service
+
+Since we're using self-managed EC2 instances, the type of service is EC2. I set the number of tasks to 1. Next, we add the above configured ALB to our service and add the container as a target. For now, I use a very simple autoscaling policy, with minimum tasks set to 1, desired tasks set to 1 and maximum number of tasks as 2, which runs when average CPU utilization for our task crosses 65% I'm sure this won't trigger given our very simple app but nevertheless, we're done!
+
+### Step 5: Yaaaay, we have a basic app up and running!
+
+Now that we have our service created, it should've started a task (Which is a running instance of that service). I see a running task :)
+
+![ECS Clusters Dashboard](cluster.jpg)
+
+(As expected, CPU utilization is extremely low)
+
+Since our ALB is internet facing, we should be able to access it directly and it should work and it does! Here's the link: [http://experiments-helloworld-alb-1556701883.ap-south-1.elb.amazonaws.com](http://experiments-helloworld-alb-1556701883.ap-south-1.elb.amazonaws.com)
+
+To finish setting up our basic app, I'll just provision a new certificate via Certificate Manager in order to use HTTPS. This would involve adding a new CNAME record. Next, I add a listener to the ALB, listening on 443 and forwarding to our target group. Once this is done, I'll create a CNAME record for `hello.metamehta.in` pointing to the ALB.
+
+Cool, so we now have our flask application running at [https://hello.metamehta.in](https://hello.metamehta.in)
+
+Woohoo! So we're done with one milestone! The next job is setting up LTTKGP, instead of our dummy application. We still need to configure a ton of stuff, security groups for example, since for now our default security group allows traffic on all ports which seems like a horrible thing to do
 
 
 
