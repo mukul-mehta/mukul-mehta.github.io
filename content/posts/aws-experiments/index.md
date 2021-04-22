@@ -64,7 +64,7 @@ The first thing I did was exactly replicate the infra we were using. It took me 
 
 - **C-3PO**: https://api.metamehta.in/
 - **R2-D2:** https://data.metamehta.in/
-- **Falcon: **https://musik.metamehta.in/
+- **Falcon:** https://musik.metamehta.in/
 
 
 
@@ -115,7 +115,47 @@ This should be simple hopefully. Go to ECS, create a new cluster and select temp
 
 This is where it started to get tricky for me. Do I need to setup a launch template and a autoscaling group, or can I do with just creating an instance for now :confused:
 
-Let's try creating a launch template for now.
+Let's try creating a launch template for now. 
+
+Since we need an instance for ECS, we'll choose a community AMI that it optimized for ECS. The latest one can be found [here](https://ap-south-1.console.aws.amazon.com/systems-manager/parameters/aws/service/ecs/optimized-ami/amazon-linux-2/recommended/image_id/description?region=ap-south-1#). The AMI comes with a 30GB root volume by default, and I don't think I'll add more storage for now. I don't specify an instance type in the launch template either. To add this instance to our ECS cluster, I add the following in user data (Advanced -> User data)
+
+```bash
+#!/bin/bash
+echo ECS_CLUSTER=your_cluster_name >> /etc/ecs/ecs.config
+```
+
+
+
+I'll create just one instance for now. a t2.micro using the above launch template. I select the subnet as `helloworld-public-1` and use the default security group for now. I also need to create a new IAM Role for the instance, as mentioned in [this guide](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/launch_container_instance.html). The new IAM role has the follwing permissions:
+
+![IAM Role for ECS](IAM.jpg)
+
+
+
+Now, we have a t2.micro EC2 instance, running an Amazon Linux AMI that is optimized for ECS, with our custom IAM role and user data. We should now this instance attached to our ECS cluster :crossed_fingers: 
+
+IT DIDN'T WORK :neutral_face:
+
+Okay, gotta do this all over again. I need to create an EC2 instance and make sure that it's attached to the ECS cluster. Why is this so hard :disappointed:
+
+AWS's documentation says that the correct IAM role to use is called `ecsInstanceRole`. There isn't a profile with that name on my dashboard, let me create one using the instructions mentioned [here](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/instance_IAM_role.html).
+
+
+Okay, this was my fault. Turns out I forgot to add a route in my routing table for this VPC. In order to use ECS, the instances need to have a route to reach the ECS service endpoints. For this, I need to add a route in my routing table, that routes to my internet gateway. Doing this fixed the problem and I can now see the EC2 instance in my ECS cluster
+
+![This is how the routing table should look](RouteTable.jpg)
+
+
+
+### Step 4: Create a new service in the ECS cluster
+
+Before this, I need to setup a task definition. The task definition is a recipe for the service and specifies the image and hardware requirements for the task. 
+
+
+In the task definition, I specify the URI of the container image (Which I pushed to ECR), a memory limit of 512MB and 512 CPU Units (Each CPU core is 1024 CPU units). I also need to add a port mapping, from 8000 in host to 8000 in the container, since my flask app is listening on port 8000 inside the container.
+
+
+Once we're done with creating with task definition, I need to create a service
 
 
 
