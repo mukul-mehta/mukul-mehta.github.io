@@ -105,7 +105,17 @@ I've created a new private repository on AWS ECR called `flask-ecs`, to which I'
 
 
 
+### Step 2: Create an empty ECS cluster
 
+This should be simple hopefully. Go to ECS, create a new cluster and select template as EC2 Linux + Networking, give it a name and choose empty cluster on the next page
+
+
+
+### Step 3: Create a launch template for EC2 instances
+
+This is where it started to get tricky for me. Do I need to setup a launch template and a autoscaling group, or can I do with just creating an instance for now :confused:
+
+Let's try creating a launch template for now.
 
 
 
