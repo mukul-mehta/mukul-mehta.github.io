@@ -91,6 +91,10 @@ I also create a route table, with both of these subnets and a internet gateway t
 
 
 
+**NOTE:** In your routing table, add a route from 0.0.0.0/0 to the above configured internet gateway. I didn't and it took me some time to figure it out
+
+
+
 ## Creating our test Flask app
 
 To begin, I'll use a simple hello world app. I'll keep iterating if I'm able to successfully deploy this first
