@@ -67,8 +67,3 @@ My semester has started (Online AHHHHHHHHHHHHHHHH) and I'll probably be buried i
           </svg>
 </a>
 </div>
-
-[zola]: https://getzola.org
-[original]: https://github.com/victoriadotdev/hugo-theme-sam
-[hugo]: https://gohugo.io
-[repository]: https://github.com/janbaudisch/zola-sam
