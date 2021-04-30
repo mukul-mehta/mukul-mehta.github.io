@@ -54,7 +54,62 @@ For now, I'm not trying the alpine base image
 
 ## Attempt #3: Multistage builds
 
-TBD
+Docker has this cool idea of multistage builds, where you can install all of your dependencies in one image, and copy just the installed dependencies over to a new image. We use this second image as our final image, in which our app runs. 
+
+
+
+To create a multistage build, in our first image, we install all dependencies in a virtualenv (since it'll help keep everything in one folder). Then, we copy over this created venv to our final image, and add it to PATH. Our final image now just the venv folder, and no extra dependencies (such as `gcc` that we had installed in our first image)
+
+Here's the Dockerfile for reference
+
+```dockerfile
+# Base Python image for container
+FROM python:3.7-slim AS builder
+RUN apt-get update \
+    && apt-get install gcc -y \
+    && apt-get clean
+
+RUN python -m venv /opt/venv
+ENV PATH="/opt/venv/bin:$PATH"
+
+COPY requirements/common.txt requirements.txt
+RUN pip install --upgrade pip && pip install --no-cache-dir -r requirements.txt
+
+
+FROM python:3.7-slim
+
+# Set unbuffered output to make sure all logs are printed and not stuck in buffer
+ENV PYTHONUNBUFFERED 1
+
+RUN mkdir -p /c3po
+COPY --from=builder /opt/venv /opt/venv
+ENV PATH="/opt/venv/bin:$PATH"
+
+ADD . /c3po/
+WORKDIR /c3po
+RUN pip install -e .
+
+ENV PYTHONPATH=/c3po
+
+COPY entrypoint.sh /entrypoint.sh
+RUN chmod +x /entrypoint.sh
+EXPOSE 8000
+ENTRYPOINT ["/entrypoint.sh"]
+
+```
+
+
+Let's see how this build goes, :crossed_fingers:
+
+![Multistage Build](multistage.jpg)
+
+Daaaaamn! We're down to 196 MB, which is a fifth of our original 1.03 GB image. Hitting a couple of endpoints, and messing around with settings, and everything seems to work pretty well (which makes sense, since nothing really changed with our app)
+
+
+
+I don't think there's anything further I'm going to be trying ATM. Using python slim as a base, and switching to multistage builds is magical and I'm pretty satisfied with our final image being just 20% the size of our original image, with a 50% reduction in build time!
+
+Do let me know of other things I could try. I'd love to try those out!
 
 
 
@@ -63,4 +118,5 @@ TBD
 - [https://pythonspeed.com/articles/alpine-docker-python/](https://pythonspeed.com/articles/alpine-docker-python/)
 - [https://medium.com/swlh/alpine-slim-stretch-buster-jessie-bullseye-bookworm-what-are-the-differences-in-docker-62171ed4531d](https://medium.com/swlh/alpine-slim-stretch-buster-jessie-bullseye-bookworm-what-are-the-differences-in-docker-62171ed4531d)
 - [https://blog.realkinetic.com/building-minimal-docker-containers-for-python-applications-37d0272c52f3](https://blog.realkinetic.com/building-minimal-docker-containers-for-python-applications-37d0272c52f3)
+- [https://docs.docker.com/develop/develop-images/multistage-build/](https://docs.docker.com/develop/develop-images/multistage-build/)
 
