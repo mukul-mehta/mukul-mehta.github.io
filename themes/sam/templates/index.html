@@ -36,7 +36,27 @@
     </head>
     <body>
         {% block body %}
+            <script>
+                (function initTheme() {
+                let body = document.getElementsByTagName('body')[0];
+                if (window.localStorage.getItem('theme') !== null) {
+                    if (window.localStorage.getItem('theme') === 'dark') {
+                    body.setAttribute('data-theme', 'dark');
+                    } else {
+                    body.setAttribute('data-theme', 'light');
+                    }
+                } else {
+                    if (
+                    window.matchMedia &&
+                    window.matchMedia('(prefers-color-scheme: dark)').matches
+                    ) {
+                    body.setAttribute('data-theme', 'dark');
+                    }
+                }
+                })();
+            </script>
             <div class="section" id="splash">
+            <div class="theme-switcher">{{ macros::theme_switcher() }}</div>
                 {% if config.extra.sam_menu %}
                     {% for link in config.extra.sam_menu %}
                         <div class="big-link">
@@ -56,6 +76,10 @@
                     {% endfor %}
                 {% endif %}
             </div>
+            <script
+                src="{{ get_url(path='main.js', trailing_slash=false) }}"
+                type="text/javascript"
+            ></script>
         {% endblock body %}
         <script crossorigin="anonymous" integrity="sha256-NkH6G4XRcQ5Bsfs7O6yh9mw1SJLEOJWCtWqko6VjF34=" src="https://cdn.jsdelivr.net/npm/chart.xkcd@1.1/dist/chart.xkcd.min.js"></script>
     </body>

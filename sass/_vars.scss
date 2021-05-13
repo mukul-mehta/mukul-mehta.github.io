@@ -1,0 +1,20 @@
+:root,
+[data-theme="light"] {
+  --white: #eee;
+  --black: #111;
+  --dark-grey: #000;
+
+  --background-color: var(--white);
+
+  --font: "Rajdhani", "sans serif";
+  --heading-font: "OperatorMono";
+  --code-font: "DankMono";
+
+  --body-size: 16px;
+  --body-text: var(--black);
+
+  --links: var(--black);
+  --links-hover: #444;
+
+  --code-block: #000004;
+}

@@ -1,0 +1,139 @@
+// Colors
+[data-theme="dark"] {
+  --white: #fff;
+  --black: #111;
+  --dark-grey: #39424e;
+
+  --background-color: var(--dark-grey);
+
+  --font: "Rajdhani", "sans serif";
+  --heading-font: "OperatorMono";
+  --code-font: "DankMono";
+
+  --body-size: 16px;
+  --body-text: var(--white);
+
+  --links: var(--white);
+  --links-hover: rgb(114, 114, 114);
+
+  --code-block: #000004;
+}
+
+.theme-switcher {
+  display: inline-block;
+  cursor: pointer;
+  vertical-align: middle;
+  .theme-button {
+    cursor: pointer;
+    background-color: var(--black);
+    width: 78px;
+    height: 36px;
+    border-radius: 18px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  #dayIcon {
+    position: relative;
+    left: 8px;
+    fill: var(--body-text);
+  }
+
+  #nightIcon {
+    position: relative;
+    right: 8px;
+    fill: var(--links-hover);
+  }
+
+  #dayIcon,
+  #nightIcon {
+    height: 20px;
+    width: 20px;
+    cursor: pointer;
+    z-index: 10;
+    top: 4px;
+    transition: fill 0.25s ease-in-out;
+  }
+
+  .toggle {
+    display: none;
+  }
+
+  .toggle-button {
+    cursor: pointer;
+    position: absolute;
+    height: 40px;
+    width: 40px;
+    z-index: 0;
+    border-radius: 20px;
+    margin-left: -2px;
+    margin-top: -2px;
+    transition: all 0.25s ease-in-out;
+    background-color: var(--white);
+    @include sm {
+      margin-top: 0px;
+    }
+  }
+
+  &:hover {
+    .toggle-button {
+      box-shadow: 0px 4px 10px var(--white);
+    }
+  }
+}
+
+[data-theme="dark"] {
+  .theme-switcher {
+    .toggle-button {
+      margin-left: 40px;
+    }
+
+    #dayIcon {
+      fill: var(--body-text);
+    }
+
+    #nightIcon {
+      fill: var(--background-color);
+    }
+  }
+}
+
+// Special Styles
+
+[data-theme="dark"] {
+  main {
+    .about,
+    .post {
+      .post-content {
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6 {
+          text-shadow: 0px 5px 20px var(--white);
+        }
+      }
+
+      blockquote {
+        &:before {
+          color: var(--body-text);
+          text-shadow: 0px 5px 20px var(--white);
+        }
+      }
+
+      pre {
+        background-color: var(--dark-grey) !important;
+      }
+    }
+  }
+
+  #header {
+    .logo {
+      a {
+        text-shadow: 0px 5px 20px var(--white);
+      }
+    }
+  }
+}
