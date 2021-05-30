@@ -18,6 +18,7 @@ check_external_links = "true"
 taxonomies = [
     {name = "tags", rss = true}
 ]
+generate_feed = true
 
 [markdown]
 highlight_code = true
