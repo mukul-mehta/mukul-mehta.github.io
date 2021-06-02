@@ -1,5 +1,7 @@
 @import "vars"
 @import "mixins"
+@import "elements"
+@import "altTheme"
 
 *
     margin: 0
@@ -8,14 +10,14 @@
     box-sizing: border-box
 
 html
-    background-color: $dark-grey
-    font-family: $font
+    font-family: var(--font)
     font-size: 16px
 
 body
-    font-size: $body-size
-    font-family: $font
-    color: $body-text
+    background-color: var(--background-color)
+    font-size: var(--body-size)
+    font-family: var(--font)
+    color: var(--body-text)
     line-height: 2rem
     letter-spacing: 1.5px
     text-shadow: none
@@ -44,23 +46,23 @@ p
     opacity: 0.8
 
 a
-    color: $links
+    color: var(--links)
     text-decoration: none
-    border-bottom: 2px solid $links
+    border-bottom: 2px solid var(--links)
     +ease(0.5s)
     &:hover
-        color: $links-hover
+        color: var(--links-hover)
         font-style: none
     &:active
-        color: $links
+        color: var(--links)
 
 button
     padding: 20px
     border: 0px
     border-radius: 5px
-    background: $white
+    background: var(--white)
     &:hover
-        box-shadow: 5px 5px $black
+        box-shadow: 5px 5px var(--black)
 
 hr
     opacity: 0.3
@@ -91,6 +93,16 @@ hr
     justify-content: center
     align-items: flex-start
 
+    .theme-switcher
+        display: inline-block
+        top: 0
+        right: 0
+        position: absolute
+        margin: 5rem 5rem 0 0
+
+        @include sm
+            margin: 2rem 2rem 0 0
+
 .bottom-menu
     display: flex
     flex-direction: column
@@ -110,15 +122,13 @@ hr
     position: relative
     bottom: 0
     padding: 0rem 1rem 3rem 1rem
-    font-family: $font
+    font-family: var(--font)
     font-size: 1rem
     line-height: 1em
     opacity: 0.8
     a
         border-bottom: none
         display: contents
-
-@import "elements"
 
 // Helpers
 
