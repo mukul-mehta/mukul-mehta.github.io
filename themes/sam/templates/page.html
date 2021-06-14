@@ -42,21 +42,16 @@
         <hr/>{% endif %}
     {{ page.content | safe }}
     {% if not page.extra.no_comments %}
-        {% if config.extra.disqus_shortname %}
+        {% if not page.extra.no_comments %}
             <h1>Comments</h1>
-            <div id="disqus_thread"></div>
-            <script>
-                (function () {
-                    var d = document,
-                        s = d.createElement("script");
-                    s.src = "https://" + `{{ config.extra.disqus_shortname }}` + ".disqus.com/embed.js";
-                    s.setAttribute("data-timestamp", + new Date());
-                    (d.head || d.body).appendChild(s);
-                })();
+            <script src="https://utteranc.es/client.js"
+                    repo="mukul-mehta/mukul-mehta.github.io"
+                    issue-term="pathname"
+                    label="comment"
+                    theme="preferred-color-scheme"
+                    crossorigin="anonymous"
+                    async>
             </script>
-            <noscript>Please enable JavaScript to view the
-                <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
-            </noscript>
         {% endif %}
     {% endif %}
 {% endblock content %}

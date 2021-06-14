@@ -28,7 +28,8 @@ highlight_theme = "charcoal"
 # Put all your custom variables here
 show_word_count = true
 show_reading_time = true
-disqus_shortname = "https-metamehta-me"
+# Disqus is now disabled, and replaced with utteranc.es
+# disqus_shortname = "https-metamehta-me"
 
 date_format = "%A %e %b, %Y"
 
