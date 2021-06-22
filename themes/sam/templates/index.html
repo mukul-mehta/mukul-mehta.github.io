@@ -33,6 +33,7 @@
         {% if config.generate_rss %}
             <link href="{{ get_url(path='rss.xml') }}" rel="alternate" title="RSS" type="application/rss+xml"/>
         {% endif %}
+        <script defer data-domain="metamehta.in" src="https://plausible.io/js/plausible.js"></script>
     </head>
     <body>
         {% block body %}
@@ -82,7 +83,6 @@
             ></script>
         {% endblock body %}
         <script type="text/javascript" crossorigin="anonymous" integrity="sha256-NkH6G4XRcQ5Bsfs7O6yh9mw1SJLEOJWCtWqko6VjF34=" src="https://cdn.jsdelivr.net/npm/chart.xkcd@1.1/dist/chart.xkcd.min.js"></script>
-        <script type="text/javascript" crossorigin="anonymous" async defer="defer" src="https://scripts.simpleanalyticscdn.com/latest.js"></script>
-        <noscript><img src="https://queue.simpleanalyticscdn.com/noscript.gif" alt="" referrerpolicy="no-referrer-when-downgrade" /></noscript>
+        <script defer data-domain="metamehta.in" src="https://plausible.io/js/plausible.js"></script>        
     </body>
 </html>
