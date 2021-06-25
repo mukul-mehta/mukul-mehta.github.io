@@ -28,8 +28,6 @@ highlight_theme = "charcoal"
 # Put all your custom variables here
 show_word_count = true
 show_reading_time = true
-# Disqus is now disabled, and replaced with utteranc.es
-# disqus_shortname = "https-metamehta-me"
 
 date_format = "%A %e %b, %Y"
 
@@ -55,8 +53,8 @@ webmanifest = "/favicons/site.webmanifest"
 video_id = "OyuL5biOQ94"
 
 [extra.social]
-mail = "mailto:mukul.csiitkgp@gmail.com"
-twitter = "https://twitter.com/metamehta_"
+mail = "mailto:hello@mukul-mehta.in"
+twitter = "https://twitter.com/mukulmehta_"
 github = "https://github.com/mukul-mehta"
 facebook = "https://facebook.com/mukul.amehta"
 rss_feed = "https://mukul-mehta.in/atom.xml"
