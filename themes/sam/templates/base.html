@@ -29,13 +29,13 @@ htmltitle %}{% endblock htmltitle %} {% block body %}
   </div>
   <script
     src="{{ get_url(path='main.js', trailing_slash=false) }}"
-    type="text/javascript"
-  ></script>
+    type="text/javascript">
+  </script>
   {{ macros::bottom_menu() }}
+  <script
+    defer
+    data-domain="mukul-mehta.in"
+    src="https://plausible.io/js/plausible.js">
+  </script>
 </div>
-<script
-  defer
-  data-domain="mukul-mehta.in"
-  src="https://plausible.io/js/plausible.js"
-></script>
 {% endblock body %}
