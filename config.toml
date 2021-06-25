@@ -39,7 +39,7 @@ sam_menu = [
     { text = "about", link = "/about" },
     { text = "posts", link = "/posts" },
     { text = "t.i.l.", link = "/til" },
-    {text = "resume", link="Mukul_Mehta-Resume.pdf"}
+    {text = "resume", link="/Mukul_Mehta-Resume.pdf"}
 ]
 
 sam_bottom_menu = true
