@@ -8,7 +8,7 @@ tags = ["Docker", "Python"]
 
 
 
-Over the past couple days, I was working on AWS infra for LTTKGP (I've written a [blog](https://metamehta.in/posts/aws-experiments/) about it). One of the major services, C-3PO is built with Flask-REST, and we use Docker to deploy it (Using AWS ECS).
+Over the past couple days, I was working on AWS infra for LTTKGP (I've written a [blog](https://mukul-mehta.in/posts/aws-experiments/) about it). One of the major services, C-3PO is built with Flask-REST, and we use Docker to deploy it (Using AWS ECS).
 
 The image that we use takes some time to build and push to AWS ECR. I had to do this a couple of times and it was quite frustrating to wait. I googled a couple ways to reduce the size of the container and tried some of them
 

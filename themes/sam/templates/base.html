@@ -1,41 +1,41 @@
-{% extends "index.html" %}
-{% import "macros.html" as macros %}
-{% block htmltitle %}{% endblock htmltitle %}
-{% block body %}
-    <div class="wrap">
-        <script>
-            (function initTheme() {
-            let body = document.getElementsByTagName('body')[0];
-            if (window.localStorage.getItem('theme') !== null) {
-                if (window.localStorage.getItem('theme') === 'dark') {
-                body.setAttribute('data-theme', 'dark');
-                } else {
-                body.setAttribute('data-theme', 'light');
-                }
-            } else {
-                if (
-                window.matchMedia &&
-                window.matchMedia('(prefers-color-scheme: dark)').matches
-                ) {
-                body.setAttribute('data-theme', 'dark');
-                }
-            }
-            })();
-        </script>
-        <div class="section">
-            <div class="theme-switcher">{{ macros::theme_switcher() }}</div>
-        </div>
-        <div class="section" id="title">
-            {% block title %}{% endblock title %}
-        </div>
-        <div class="section" id="content">
-            {% block content %}{% endblock content %}
-        </div>
-        <script
-            src="{{ get_url(path='main.js', trailing_slash=false) }}"
-            type="text/javascript"
-        ></script>
-        {{ macros::bottom_menu() }}
-    </div>
-    <script defer data-domain="metamehta.in" src="https://plausible.io/js/plausible.js"></script>
+{% extends "index.html" %} {% import "macros.html" as macros %} {% block
+htmltitle %}{% endblock htmltitle %} {% block body %}
+<div class="wrap">
+  <script>
+    (function initTheme() {
+      let body = document.getElementsByTagName("body")[0];
+      if (window.localStorage.getItem("theme") !== null) {
+        if (window.localStorage.getItem("theme") === "dark") {
+          body.setAttribute("data-theme", "dark");
+        } else {
+          body.setAttribute("data-theme", "light");
+        }
+      } else {
+        if (
+          window.matchMedia &&
+          window.matchMedia("(prefers-color-scheme: dark)").matches
+        ) {
+          body.setAttribute("data-theme", "dark");
+        }
+      }
+    })();
+  </script>
+  <div class="section">
+    <div class="theme-switcher">{{ macros::theme_switcher() }}</div>
+  </div>
+  <div class="section" id="title">{% block title %}{% endblock title %}</div>
+  <div class="section" id="content">
+    {% block content %}{% endblock content %}
+  </div>
+  <script
+    src="{{ get_url(path='main.js', trailing_slash=false) }}"
+    type="text/javascript"
+  ></script>
+  {{ macros::bottom_menu() }}
+</div>
+<script
+  defer
+  data-domain="mukul-mehta.in"
+  src="https://plausible.io/js/plausible.js"
+></script>
 {% endblock body %}

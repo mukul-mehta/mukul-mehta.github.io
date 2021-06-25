@@ -1,88 +1,112 @@
 {% import "macros.html" as macros %}
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="utf-8"/>
-        <meta content="chrome=1" http-equiv="X-UA-Compatible"/>
-        <meta content="True" name="HandheldFriendly"/>
-        <meta content="320" name="MobileOptimized"/>
-        <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-        <meta content="no-referrer" name="referrer"/>
-        {% if config.extra.favicon.webmanifest %}
-            <link href='{{ config.extra.favicon.webmanifest }}' rel="manifest"/>
-        {% endif %}
-        {% if config.extra.favicon.safari_pinned_tab %}
-            <link color="#5bbad5" href='{{ config.extra.favicon.safari_pinned_tab }}' rel="mask-icon"/>
-        {% endif %}
-        {% if config.extra.favicon.favicon_16x16 %}
-            <link href='{{ config.extra.favicon.favicon_16x16 }}' rel="icon" sizes="16x16" type="image/png"/>
-        {% endif %}
-        {% if config.extra.favicon.favicon_32x32 %}
-            <link href='{{ config.extra.favicon.favicon_32x32 }}' rel="icon" sizes="32x32" type="image/png"/>
-        {% endif %}
-        {% if config.extra.favicon.apple_touch_icon %}
-            <link href='{{ config.extra.favicon.apple_touch_icon }}' rel="apple-touch-icon" sizes="180x180"/>
-        {% endif %}
-        <link href="{{ get_url(path='fonts.css') }}" rel="stylesheet"/>
-        <link href="{{ get_url(path='style.css') }}" rel="stylesheet"/>
-        <title>
-            {% block htmltitle %}
-                {{ config.title }}
-            {% endblock htmltitle %}
-        </title>
-        {% if config.generate_rss %}
-            <link href="{{ get_url(path='rss.xml') }}" rel="alternate" title="RSS" type="application/rss+xml"/>
-        {% endif %}
-        <script defer data-domain="metamehta.in" src="https://plausible.io/js/plausible.js"></script>
-    </head>
-    <body>
-        {% block body %}
-            <script>
-                (function initTheme() {
-                let body = document.getElementsByTagName('body')[0];
-                if (window.localStorage.getItem('theme') !== null) {
-                    if (window.localStorage.getItem('theme') === 'dark') {
-                    body.setAttribute('data-theme', 'dark');
-                    } else {
-                    body.setAttribute('data-theme', 'light');
-                    }
-                } else {
-                    if (
-                    window.matchMedia &&
-                    window.matchMedia('(prefers-color-scheme: dark)').matches
-                    ) {
-                    body.setAttribute('data-theme', 'dark');
-                    }
-                }
-                })();
-            </script>
-            <div class="section" id="splash">
-            <div class="theme-switcher">{{ macros::theme_switcher() }}</div>
-                {% if config.extra.sam_menu %}
-                    {% for link in config.extra.sam_menu %}
-                        <div class="big-link">
-                            <a href="{{ link.link }}">
-                                {{ link.text }}
-                            </a>
-                        </div>
-                    {% endfor %}
-                {% else %}
-                    {% for current in section.subsections %}
-                        {% set current = get_section(path=current) %}
-                        <div class="big-link">
-                            <a href="{{ current.permalink }}">
-                                {{ macros::title_or_last(component=current) }}
-                            </a>
-                        </div>
-                    {% endfor %}
-                {% endif %}
-            </div>
-            <script
-                src="{{ get_url(path='main.js', trailing_slash=false) }}"
-                type="text/javascript"
-            ></script>
-        {% endblock body %}
-        <script type="text/javascript" crossorigin="anonymous" integrity="sha256-NkH6G4XRcQ5Bsfs7O6yh9mw1SJLEOJWCtWqko6VjF34=" src="https://cdn.jsdelivr.net/npm/chart.xkcd@1.1/dist/chart.xkcd.min.js"></script>
-        <script defer data-domain="metamehta.in" src="https://plausible.io/js/plausible.js"></script>        
-    </body>
+  <head>
+    <meta charset="utf-8" />
+    <meta content="chrome=1" http-equiv="X-UA-Compatible" />
+    <meta content="True" name="HandheldFriendly" />
+    <meta content="320" name="MobileOptimized" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <meta content="no-referrer" name="referrer" />
+    {% if config.extra.favicon.webmanifest %}
+    <link href="{{ config.extra.favicon.webmanifest }}" rel="manifest" />
+    {% endif %} {% if config.extra.favicon.safari_pinned_tab %}
+    <link
+      color="#5bbad5"
+      href="{{ config.extra.favicon.safari_pinned_tab }}"
+      rel="mask-icon"
+    />
+    {% endif %} {% if config.extra.favicon.favicon_16x16 %}
+    <link
+      href="{{ config.extra.favicon.favicon_16x16 }}"
+      rel="icon"
+      sizes="16x16"
+      type="image/png"
+    />
+    {% endif %} {% if config.extra.favicon.favicon_32x32 %}
+    <link
+      href="{{ config.extra.favicon.favicon_32x32 }}"
+      rel="icon"
+      sizes="32x32"
+      type="image/png"
+    />
+    {% endif %} {% if config.extra.favicon.apple_touch_icon %}
+    <link
+      href="{{ config.extra.favicon.apple_touch_icon }}"
+      rel="apple-touch-icon"
+      sizes="180x180"
+    />
+    {% endif %}
+    <link href="{{ get_url(path='fonts.css') }}" rel="stylesheet" />
+    <link href="{{ get_url(path='style.css') }}" rel="stylesheet" />
+    <title>
+      {% block htmltitle %} {{ config.title }} {% endblock htmltitle %}
+    </title>
+    {% if config.generate_rss %}
+    <link
+      href="{{ get_url(path='rss.xml') }}"
+      rel="alternate"
+      title="RSS"
+      type="application/rss+xml"
+    />
+    {% endif %}
+    <script
+      defer
+      data-domain="mukul-mehta.in"
+      src="https://plausible.io/js/plausible.js"
+    ></script>
+  </head>
+  <body>
+    {% block body %}
+    <script>
+      (function initTheme() {
+        let body = document.getElementsByTagName("body")[0];
+        if (window.localStorage.getItem("theme") !== null) {
+          if (window.localStorage.getItem("theme") === "dark") {
+            body.setAttribute("data-theme", "dark");
+          } else {
+            body.setAttribute("data-theme", "light");
+          }
+        } else {
+          if (
+            window.matchMedia &&
+            window.matchMedia("(prefers-color-scheme: dark)").matches
+          ) {
+            body.setAttribute("data-theme", "dark");
+          }
+        }
+      })();
+    </script>
+    <div class="section" id="splash">
+      <div class="theme-switcher">{{ macros::theme_switcher() }}</div>
+      {% if config.extra.sam_menu %} {% for link in config.extra.sam_menu %}
+      <div class="big-link">
+        <a href="{{ link.link }}"> {{ link.text }} </a>
+      </div>
+      {% endfor %} {% else %} {% for current in section.subsections %} {% set
+      current = get_section(path=current) %}
+      <div class="big-link">
+        <a href="{{ current.permalink }}">
+          {{ macros::title_or_last(component=current) }}
+        </a>
+      </div>
+      {% endfor %} {% endif %}
+    </div>
+    <script
+      src="{{ get_url(path='main.js', trailing_slash=false) }}"
+      type="text/javascript"
+    ></script>
+    {% endblock body %}
+    <script
+      type="text/javascript"
+      crossorigin="anonymous"
+      integrity="sha256-NkH6G4XRcQ5Bsfs7O6yh9mw1SJLEOJWCtWqko6VjF34="
+      src="https://cdn.jsdelivr.net/npm/chart.xkcd@1.1/dist/chart.xkcd.min.js"
+    ></script>
+    <script
+      defer
+      data-domain="mukul-mehta.in"
+      src="https://plausible.io/js/plausible.js"
+    ></script>
+  </body>
 </html>
