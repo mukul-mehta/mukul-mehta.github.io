@@ -1,0 +1,61 @@
+baseURL = "https://mukul-mehta.in/"
+languageCode = "en-us"
+title = "Mukul Mehta"
+theme="archie"
+
+# Code Highlight
+pygmentsstyle = "emacs"
+pygmentscodefences = true
+pygmentscodefencesguesssyntax = true
+
+paginate = 5
+
+[params]
+mode = "light"
+useCDN = false
+subtitle = "A random collection of rants, learnings and aha! moments"
+og_image = "img/og_img.png"
+umami = true
+
+[[params.social]]
+name = "GitHub"
+icon = "github"
+url = "https://github.com/mukul-mehta"
+
+[[params.social]]
+name = "Twitter"
+icon = "twitter"
+url = "https://twitter.com/mukulmehta_"
+
+[[params.social]]
+name = "RSS"
+icon = "rss"
+url = "/index.xml"
+
+# Main menu Items
+
+
+[[menu.main]]
+name = "About"
+url = "/about"
+weight = 1
+
+[[menu.main]]
+name = "Posts"
+url = "/posts"
+weight = 2
+
+[[menu.main]]
+name = "TIL"
+url = "/til"
+weight = 3
+
+[[menu.main]]
+name = "CV"
+url = "/Mukul_Mehta-Resume.pdf"
+weight = 4
+
+[[menu.main]]
+name = "Tags"
+url = "/tags"
+weight = 5
