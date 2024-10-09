@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta content="chrome=1" http-equiv="X-UA-Compatible" />
+    <meta content="True" name="HandheldFriendly" />
+    <meta content="320" name="MobileOptimized" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <meta content="no-referrer" name="referrer" />
+    
+    <link href="&#x2F;favicons&#x2F;site.webmanifest" rel="manifest" />
+     
+    <link
+      color="#5bbad5"
+      href="&#x2F;favicons&#x2F;safari-pinned-tab.svg"
+      rel="mask-icon"
+    />
+     
+    <link
+      href="&#x2F;favicons&#x2F;favicon-16x16.png"
+      rel="icon"
+      sizes="16x16"
+      type="image/png"
+    />
+     
+    <link
+      href="&#x2F;favicons&#x2F;favicon-32x32.png"
+      rel="icon"
+      sizes="32x32"
+      type="image/png"
+    />
+     
+    <link
+      href="&#x2F;favicons&#x2F;apple-touch-icon.png"
+      rel="apple-touch-icon"
+      sizes="180x180"
+    />
+    
+    <link href="https://mukul-mehta.in/fonts.css" rel="stylesheet" />
+    <link href="https://mukul-mehta.in/style.css" rel="stylesheet" />
+    <title>
+      
+    Switching from Disqus to utteranc.es for comments
+
+    </title>
+    
+    <script async defer data-website-id="00b415fd-978e-4bcb-a280-90039a67a557" src="https://umami.mukul-mehta.in/umami.js"></script>
+  </head>
+  <body>
+    
+<div class="wrap">
+  <script>
+    (function initTheme() {
+      let body = document.getElementsByTagName("body")[0];
+      if (window.localStorage.getItem("theme") !== null) {
+        if (window.localStorage.getItem("theme") === "dark") {
+          body.setAttribute("data-theme", "dark");
+        } else {
+          body.setAttribute("data-theme", "light");
+        }
+      } else {
+        if (
+          window.matchMedia &&
+          window.matchMedia("(prefers-color-scheme: dark)").matches
+        ) {
+          body.setAttribute("data-theme", "dark");
+        }
+      }
+    })();
+  </script>
+  <div class="section">
+    <div class="theme-switcher">
+    <div class="theme-button" onClick="toggleTheme()">
+        <label for="cb1">
+            <svg
+                id="dayIcon"
+                style="enable-background:new 0 0 35 35;"
+                version="1.1"
+                viewBox="0 0 35 35"
+                x="0px"
+                xml:space="preserve"
+                xmlns:xlink="http://www.w3.org/1999/xlink"
+                xmlns="http://www.w3.org/2000/svg"
+                y="0px">
+                <g id="Sun">
+                    <g>
+                        <path
+                            d="M6,17.5C6,16.672,5.328,16,4.5,16h-3C0.672,16,0,16.672,0,17.5 S0.672,19,1.5,19h3C5.328,19,6,18.328,6,17.5z
+                                M7.5,26c-0.414,0-0.789,0.168-1.061,0.439l-2,2C4.168,28.711,4,29.086,4,29.5
+                                C4,30.328,4.671,31,5.5,31c0.414,0,0.789-0.168,1.06-0.44l2-2C8.832,28.289,9,27.914,9,27.5C9,26.672,8.329,26,7.5,26z M17.5,6
+                                C18.329,6,19,5.328,19,4.5v-3C19,0.672,18.329,0,17.5,0S16,0.672,16,1.5v3C16,5.328,16.671,6,17.5,6z M27.5,9
+                                c0.414,0,0.789-0.168,1.06-0.439l2-2C30.832,6.289,31,5.914,31,5.5C31,4.672,30.329,4,29.5,4c-0.414,0-0.789,0.168-1.061,0.44
+                                l-2,2C26.168,6.711,26,7.086,26,7.5C26,8.328,26.671,9,27.5,9z M6.439,8.561C6.711,8.832,7.086,9,7.5,9C8.328,9,9,8.328,9,7.5
+                                c0-0.414-0.168-0.789-0.439-1.061l-2-2C6.289,4.168,5.914,4,5.5,4C4.672,4,4,4.672,4,5.5c0,0.414,0.168,0.789,0.439,1.06 L6.439,8.561z
+                                M33.5,16h-3c-0.828,0-1.5,0.672-1.5,1.5s0.672,1.5,1.5,1.5h3c0.828,0,1.5-0.672,1.5-1.5S34.328,16,33.5,16z
+                                M28.561,26.439C28.289,26.168,27.914,26,27.5,26c-0.828,0-1.5,0.672-1.5,1.5c0,0.414,0.168,0.789,0.439,1.06l2,2
+                                C28.711,30.832,29.086,31,29.5,31c0.828,0,1.5-0.672,1.5-1.5c0-0.414-0.168-0.789-0.439-1.061L28.561,26.439z M17.5,29
+                                c-0.829,0-1.5,0.672-1.5,1.5v3c0,0.828,0.671,1.5,1.5,1.5s1.5-0.672,1.5-1.5v-3C19,29.672,18.329,29,17.5,29z M17.5,7
+                                C11.71,7,7,11.71,7,17.5S11.71,28,17.5,28S28,23.29,28,17.5S23.29,7,17.5,7z M17.5,25c-4.136,0-7.5-3.364-7.5-7.5
+                                c0-4.136,3.364-7.5,7.5-7.5c4.136,0,7.5,3.364,7.5,7.5C25,21.636,21.636,25,17.5,25z"
+                            style="fill-rule:evenodd;clip-rule:evenodd;"/>
+                    </g>
+                </g>
+            </svg>
+        </label>
+        <input class="toggle" id="cb1" onClick="toggleTheme()" type="checkbox"/>
+        <label class="toggle-button" for="cb1"></label>
+        <label for="cb1">
+            <svg
+                enable-background="new 0 0 100 100"
+                id="nightIcon"
+                version="1.1"
+                viewBox="0 0 100 100"
+                x="0px"
+                xml:space="preserve"
+                xmlns:xlink="http://www.w3.org/1999/xlink"
+                xmlns="http://www.w3.org/2000/svg"
+                y="0px">
+                <path d="M96.76,66.458c-0.853-0.852-2.15-1.064-3.23-0.534c-6.063,2.991-12.858,4.571-19.655,4.571
+                C62.022,70.495,50.88,65.88,42.5,57.5C29.043,44.043,25.658,23.536,34.076,6.47c0.532-1.08,0.318-2.379-0.534-3.23
+                c-0.851-0.852-2.15-1.064-3.23-0.534c-4.918,2.427-9.375,5.619-13.246,9.491c-9.447,9.447-14.65,22.008-14.65,35.369
+                c0,13.36,5.203,25.921,14.65,35.368s22.008,14.65,35.368,14.65c13.361,0,25.921-5.203,35.369-14.65 c3.872-3.871,7.064-8.328,9.491-13.246C97.826,68.608,97.611,67.309,96.76,66.458z"/>
+            </svg>
+        </label>
+    </div>
+</div>
+  </div>
+  <div class="section" id="title">
+    Switching from Disqus to utteranc.es for comments
+</div>
+  <div class="section" id="content">
+    
+    
+        <div class="byline">
+            
+                
+    
+    Monday 21 Jun, 2021
+
+            
+            
+                
+                    &#183; 353 words
+                
+            
+            
+                
+                
+                    &#183; 2 min
+                
+            
+        </div>
+        
+            <div class="tag-container">
+                
+                    <span class="tag">
+                        <a href="https://mukul-mehta.in/tags/blog/">
+                            Blog
+                        </a>
+                    </span>
+                
+                    <span class="tag">
+                        <a href="https://mukul-mehta.in/tags/utteranc-es/">
+                            utteranc.es
+                        </a>
+                    </span>
+                
+                    <span class="tag">
+                        <a href="https://mukul-mehta.in/tags/disqus/">
+                            Disqus
+                        </a>
+                    </span>
+                
+            </div>
+        
+        <hr/>
+    <p>I've been using Disqus to enable comments on this blog, and I didn't put a lot of thought into the decision to choose Disqus (In my mind Disqus is a de-facto standard for comments).</p>
+<p>Although I don't use it a lot, I have 2 major issues with Disqus:</p>
+<ul>
+<li>Disqus emails often end up in spam, and I have a really hard time configuring correct email settings for Disqus</li>
+<li>Disqus does some <a href="https://supunkavinda.blog/disqus">shady stuff, with regards to tracking</a></li>
+</ul>
+<p>A <a href="https://parth-paradkar.github.io/">friend's</a> blog uses <a href="https://utteranc.es/">utterance.es</a>, which describes itself as a <em>lightweight  comments widget built on GitHub Issues</em>. For each post, it opens an issue in a pre-configured repository, and user comments appear as comments on the linked issue. I really like the idea, and wanted to make the switch.</p>
+<p>Making the switch took me 5 minutes, and everything was ready to go!</p>
+<h2 id="configuring-utterance-es">Configuring utterance.es</h2>
+<p>The first step is to install the utterance.es app on the repository you want to use. This is pretty simple, and is the same as allowing a 3rd party GitHub application.</p>
+<p>Next, we need to add the snippet that enables comments. This needs to be added to the <code>templates/page.html</code> file since we want comments to be enabled below each page (either a post/til). This is the snippet, for my website</p>
+<pre data-lang="javascript" style="background-color:#2b2c2f;color:#cccece;" class="language-javascript "><code class="language-javascript" data-lang="javascript"><span style="color:#5fb3b3;">&lt;</span><span>script src</span><span style="color:#5fb3b3;">=&quot;</span><span style="color:#99c794;">https://utteranc.es/client.js</span><span style="color:#5fb3b3;">&quot;
+</span><span>    repo</span><span style="color:#5fb3b3;">=&quot;</span><span style="color:#99c794;">mukul-mehta/mukul-mehta.github.io</span><span style="color:#5fb3b3;">&quot;
+</span><span>    issue</span><span style="color:#5fb3b3;">-</span><span>term</span><span style="color:#5fb3b3;">=&quot;</span><span style="color:#99c794;">pathname</span><span style="color:#5fb3b3;">&quot;
+</span><span>    label</span><span style="color:#5fb3b3;">=&quot;</span><span style="color:#99c794;">comment</span><span style="color:#5fb3b3;">&quot;
+</span><span>    theme</span><span style="color:#5fb3b3;">=&quot;</span><span style="color:#99c794;">preferred-color-scheme</span><span style="color:#5fb3b3;">&quot;
+</span><span>    crossorigin</span><span style="color:#5fb3b3;">=&quot;</span><span style="color:#99c794;">anonymous</span><span style="color:#5fb3b3;">&quot;
+</span><span>    async</span><span style="color:#5fb3b3;">&gt;
+</span><span> </span><span style="color:#5fb3b3;">&lt;/</span><span>script</span><span style="color:#5fb3b3;">&gt;
+</span></code></pre>
+<p>The <code>repo</code> field is set to the repository I want to configure issues on, <code>issue-term</code> dictates the title of the issue (pathname of the specific post in this case, can also be the full URL), <code>label</code> is an optional field that adds labels to comments created via utteranc.es, and <code>theme</code> can be chosen from a list on the utteranc.es website.</p>
+<p>And done! Configuring utteranc.es was literally that easy. Would definitely recommend switching, if you use Disqus. The only issues I see are:</p>
+<ol>
+<li>If you don't have a GitHub account, or don't want to link your GitHub account to comments you make, there's no way to comment</li>
+<li>No threads: Disqus had threads, which was a logical way to structure a conversation, and GitHub issues does not support threads :(</li>
+</ol>
+
+    
+        
+            <h1>Comments</h1>
+            <script src="https://utteranc.es/client.js"
+                    repo="mukul-mehta/mukul-mehta.github.io"
+                    issue-term="pathname"
+                    label="comment"
+                    theme="preferred-color-scheme"
+                    crossorigin="anonymous"
+                    async>
+            </script>
+        
+    
+
+  </div>
+  <script
+    src="https://mukul-mehta.in/main.js"
+    type="text/javascript">
+  </script>
+  
+    <div class="section bottom-menu">
+        <hr/>
+        <p>
+            
+                
+                    <a href="&#x2F;about">about</a>
+                    &#183;
+                
+                    <a href="&#x2F;posts">posts</a>
+                    &#183;
+                
+                    <a href="&#x2F;til">t.i.l.</a>
+                    &#183;
+                
+                    <a href="&#x2F;Mukul_Mehta-Resume.pdf">resume</a>
+                    &#183;
+                
+            
+            <a href="https:&#x2F;&#x2F;mukul-mehta.in">
+                home
+            </a>
+            &#183;
+            <a href="https:&#x2F;&#x2F;github.com&#x2F;mukul-mehta">
+                github
+            </a>
+            &#183;
+            <a href="https:&#x2F;&#x2F;twitter.com&#x2F;mukulmehta_">
+                twitter
+            </a>
+            &#183;
+            <a href="https:&#x2F;&#x2F;mukul-mehta.in&#x2F;atom.xml">
+                rss
+            </a>
+        </p>
+    </div>
+
+  <script async defer data-website-id="00b415fd-978e-4bcb-a280-90039a67a557" src="https://umami.mukul-mehta.in/umami.js"></script>
+</div>
+
+    <script
+      type="text/javascript"
+      crossorigin="anonymous"
+      integrity="sha256-NkH6G4XRcQ5Bsfs7O6yh9mw1SJLEOJWCtWqko6VjF34="
+      src="https://cdn.jsdelivr.net/npm/chart.xkcd@1.1/dist/chart.xkcd.min.js"
+    ></script>
+    <script async defer data-website-id="00b415fd-978e-4bcb-a280-90039a67a557" src="https://umami.mukul-mehta.in/umami.js"></script>
+  </body>
+</html>

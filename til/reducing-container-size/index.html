@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta content="chrome=1" http-equiv="X-UA-Compatible" />
+    <meta content="True" name="HandheldFriendly" />
+    <meta content="320" name="MobileOptimized" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <meta content="no-referrer" name="referrer" />
+    
+    <link href="&#x2F;favicons&#x2F;site.webmanifest" rel="manifest" />
+     
+    <link
+      color="#5bbad5"
+      href="&#x2F;favicons&#x2F;safari-pinned-tab.svg"
+      rel="mask-icon"
+    />
+     
+    <link
+      href="&#x2F;favicons&#x2F;favicon-16x16.png"
+      rel="icon"
+      sizes="16x16"
+      type="image/png"
+    />
+     
+    <link
+      href="&#x2F;favicons&#x2F;favicon-32x32.png"
+      rel="icon"
+      sizes="32x32"
+      type="image/png"
+    />
+     
+    <link
+      href="&#x2F;favicons&#x2F;apple-touch-icon.png"
+      rel="apple-touch-icon"
+      sizes="180x180"
+    />
+    
+    <link href="https://mukul-mehta.in/fonts.css" rel="stylesheet" />
+    <link href="https://mukul-mehta.in/style.css" rel="stylesheet" />
+    <title>
+      
+    Reducing Docker container sizes for Python apps
+
+    </title>
+    
+    <script async defer data-website-id="00b415fd-978e-4bcb-a280-90039a67a557" src="https://umami.mukul-mehta.in/umami.js"></script>
+  </head>
+  <body>
+    
+<div class="wrap">
+  <script>
+    (function initTheme() {
+      let body = document.getElementsByTagName("body")[0];
+      if (window.localStorage.getItem("theme") !== null) {
+        if (window.localStorage.getItem("theme") === "dark") {
+          body.setAttribute("data-theme", "dark");
+        } else {
+          body.setAttribute("data-theme", "light");
+        }
+      } else {
+        if (
+          window.matchMedia &&
+          window.matchMedia("(prefers-color-scheme: dark)").matches
+        ) {
+          body.setAttribute("data-theme", "dark");
+        }
+      }
+    })();
+  </script>
+  <div class="section">
+    <div class="theme-switcher">
+    <div class="theme-button" onClick="toggleTheme()">
+        <label for="cb1">
+            <svg
+                id="dayIcon"
+                style="enable-background:new 0 0 35 35;"
+                version="1.1"
+                viewBox="0 0 35 35"
+                x="0px"
+                xml:space="preserve"
+                xmlns:xlink="http://www.w3.org/1999/xlink"
+                xmlns="http://www.w3.org/2000/svg"
+                y="0px">
+                <g id="Sun">
+                    <g>
+                        <path
+                            d="M6,17.5C6,16.672,5.328,16,4.5,16h-3C0.672,16,0,16.672,0,17.5 S0.672,19,1.5,19h3C5.328,19,6,18.328,6,17.5z
+                                M7.5,26c-0.414,0-0.789,0.168-1.061,0.439l-2,2C4.168,28.711,4,29.086,4,29.5
+                                C4,30.328,4.671,31,5.5,31c0.414,0,0.789-0.168,1.06-0.44l2-2C8.832,28.289,9,27.914,9,27.5C9,26.672,8.329,26,7.5,26z M17.5,6
+                                C18.329,6,19,5.328,19,4.5v-3C19,0.672,18.329,0,17.5,0S16,0.672,16,1.5v3C16,5.328,16.671,6,17.5,6z M27.5,9
+                                c0.414,0,0.789-0.168,1.06-0.439l2-2C30.832,6.289,31,5.914,31,5.5C31,4.672,30.329,4,29.5,4c-0.414,0-0.789,0.168-1.061,0.44
+                                l-2,2C26.168,6.711,26,7.086,26,7.5C26,8.328,26.671,9,27.5,9z M6.439,8.561C6.711,8.832,7.086,9,7.5,9C8.328,9,9,8.328,9,7.5
+                                c0-0.414-0.168-0.789-0.439-1.061l-2-2C6.289,4.168,5.914,4,5.5,4C4.672,4,4,4.672,4,5.5c0,0.414,0.168,0.789,0.439,1.06 L6.439,8.561z
+                                M33.5,16h-3c-0.828,0-1.5,0.672-1.5,1.5s0.672,1.5,1.5,1.5h3c0.828,0,1.5-0.672,1.5-1.5S34.328,16,33.5,16z
+                                M28.561,26.439C28.289,26.168,27.914,26,27.5,26c-0.828,0-1.5,0.672-1.5,1.5c0,0.414,0.168,0.789,0.439,1.06l2,2
+                                C28.711,30.832,29.086,31,29.5,31c0.828,0,1.5-0.672,1.5-1.5c0-0.414-0.168-0.789-0.439-1.061L28.561,26.439z M17.5,29
+                                c-0.829,0-1.5,0.672-1.5,1.5v3c0,0.828,0.671,1.5,1.5,1.5s1.5-0.672,1.5-1.5v-3C19,29.672,18.329,29,17.5,29z M17.5,7
+                                C11.71,7,7,11.71,7,17.5S11.71,28,17.5,28S28,23.29,28,17.5S23.29,7,17.5,7z M17.5,25c-4.136,0-7.5-3.364-7.5-7.5
+                                c0-4.136,3.364-7.5,7.5-7.5c4.136,0,7.5,3.364,7.5,7.5C25,21.636,21.636,25,17.5,25z"
+                            style="fill-rule:evenodd;clip-rule:evenodd;"/>
+                    </g>
+                </g>
+            </svg>
+        </label>
+        <input class="toggle" id="cb1" onClick="toggleTheme()" type="checkbox"/>
+        <label class="toggle-button" for="cb1"></label>
+        <label for="cb1">
+            <svg
+                enable-background="new 0 0 100 100"
+                id="nightIcon"
+                version="1.1"
+                viewBox="0 0 100 100"
+                x="0px"
+                xml:space="preserve"
+                xmlns:xlink="http://www.w3.org/1999/xlink"
+                xmlns="http://www.w3.org/2000/svg"
+                y="0px">
+                <path d="M96.76,66.458c-0.853-0.852-2.15-1.064-3.23-0.534c-6.063,2.991-12.858,4.571-19.655,4.571
+                C62.022,70.495,50.88,65.88,42.5,57.5C29.043,44.043,25.658,23.536,34.076,6.47c0.532-1.08,0.318-2.379-0.534-3.23
+                c-0.851-0.852-2.15-1.064-3.23-0.534c-4.918,2.427-9.375,5.619-13.246,9.491c-9.447,9.447-14.65,22.008-14.65,35.369
+                c0,13.36,5.203,25.921,14.65,35.368s22.008,14.65,35.368,14.65c13.361,0,25.921-5.203,35.369-14.65 c3.872-3.871,7.064-8.328,9.491-13.246C97.826,68.608,97.611,67.309,96.76,66.458z"/>
+            </svg>
+        </label>
+    </div>
+</div>
+  </div>
+  <div class="section" id="title">
+    Reducing Docker container sizes for Python apps
+</div>
+  <div class="section" id="content">
+    
+    
+        <div class="byline">
+            
+                
+    
+    Thursday 29 Apr, 2021
+
+            
+            
+                
+                    &#183; 815 words
+                
+            
+            
+                
+                
+                    &#183; 5 min
+                
+            
+        </div>
+        
+            <div class="tag-container">
+                
+                    <span class="tag">
+                        <a href="https://mukul-mehta.in/tags/docker/">
+                            Docker
+                        </a>
+                    </span>
+                
+                    <span class="tag">
+                        <a href="https://mukul-mehta.in/tags/python/">
+                            Python
+                        </a>
+                    </span>
+                
+            </div>
+        
+        <hr/>
+    <p>Over the past couple days, I was working on AWS infra for LTTKGP (I've written a <a href="https://mukul-mehta.in/posts/aws-experiments/">blog</a> about it). One of the major services, C-3PO is built with Flask-REST, and we use Docker to deploy it (Using AWS ECS).</p>
+<p>The image that we use takes some time to build and push to AWS ECR. I had to do this a couple of times and it was quite frustrating to wait. I googled a couple ways to reduce the size of the container and tried some of them</p>
+<p>To begin with, here's our original image. It's based on Python 3.7, and we cache dependencies when installing with <code>pip</code>. The container is 1.03 GB in size, and takes around 195 seconds to build, on my laptop.</p>
+<p><img src="https://mukul-mehta.in/til/reducing-container-size/vanilla.jpg" alt="Current image that we use" /></p>
+<h2 id="attempt-1-disable-pip-s-dependency-caching">Attempt #1: Disable pip's dependency caching</h2>
+<p>Using the <code>--no-cache-dir</code> flag, we can disable caching dependencies installed via pip. This should reduce the size by a couple MBs atleast. Since the cache is useless inside the container, this has no unintended side-effects.</p>
+<p><img src="https://mukul-mehta.in/til/reducing-container-size/vanilla-no-cache.jpg" alt="Vanilla image with cache disabled" /></p>
+<p>The size reduced by 38 MB or so, yaaay I guess</p>
+<h2 id="attempt-2-using-python-slim-as-base-image">Attempt #2: Using python-slim as base image</h2>
+<p>Right now, we're using <code>python:3.7</code> as our base image. This image is based on Debian Buster (Debian 10), and comes with a ton of packages, most of which we do not need. We could use <code>python:3.7-slim</code> as our base image, it contains only the packages needed to run python (it's still based on Debian)</p>
+<p>There's 2 caveats though:</p>
+<ol>
+<li>We use uWSGI, which needs GCC and glibc during installation, and we need to install those via <code>apt</code></li>
+<li>To install the <code>psycopg2</code> package, we need <code>pg_config</code>. To avoid installing it from source, we install the <code>'psycopg2-binary</code> package instead</li>
+</ol>
+<pre data-lang="dockerfile" style="background-color:#2b2c2f;color:#cccece;" class="language-dockerfile "><code class="language-dockerfile" data-lang="dockerfile"><span style="color:#c594c5;">FROM</span><span> python:3.7-slim
+</span><span style="color:#c594c5;">RUN </span><span>apt-get update \
+</span><span>    &amp;&amp; apt-get install gcc -y \
+</span><span>    &amp;&amp; apt-get clean
+</span></code></pre>
+<p><img src="https://mukul-mehta.in/til/reducing-container-size/slim.jpg" alt="Using Python Slim as base image" /></p>
+<p>Damn, we're down to 343MB. It took around 100 seconds to build, which is half the time to build the original image. Since we haven't made any changes to our python app as such, I expect it to run properly. I tried hitting a couple endpoints manually (obviously a pretty crude way of testing) and it works alright!</p>
+<h4 id="using-alpine-as-base">Using Alpine as base</h4>
+<p>We could use <code>python:3.7-alpine</code> as a base image for our container. Alpine is a lightweight distro, that is very popular with containers. It ships with musl and busybox, instead of glibc and GNU coreutils. I did read on a couple places though that unless space is a major constraint, it's not a great idea to use alpine as a base image for python apps, since all wheels don't build, and there are issues with debugging</p>
+<p>Also, uWSGI needs glibc to install by default. There are ways to install it using musl but I'll need to try those. There's also other issues, <code>psycopg2</code> needs to be built from source etc</p>
+<p>For now, I'm not trying the alpine base image</p>
+<h2 id="attempt-3-multistage-builds">Attempt #3: Multistage builds</h2>
+<p>Docker has this cool idea of multistage builds, where you can install all of your dependencies in one image, and copy just the installed dependencies over to a new image. We use this second image as our final image, in which our app runs.</p>
+<p>To create a multistage build, in our first image, we install all dependencies in a virtualenv (since it'll help keep everything in one folder). Then, we copy over this created venv to our final image, and add it to PATH. Our final image now just the venv folder, and no extra dependencies (such as <code>gcc</code> that we had installed in our first image)</p>
+<p>Here's the Dockerfile for reference</p>
+<pre data-lang="dockerfile" style="background-color:#2b2c2f;color:#cccece;" class="language-dockerfile "><code class="language-dockerfile" data-lang="dockerfile"><span style="color:#5f6364;"># Base Python image for container
+</span><span style="color:#c594c5;">FROM</span><span> python:3.7-slim </span><span style="color:#c594c5;">AS </span><span>builder
+</span><span style="color:#c594c5;">RUN </span><span>apt-get update \
+</span><span>    &amp;&amp; apt-get install gcc -y \
+</span><span>    &amp;&amp; apt-get clean
+</span><span>
+</span><span style="color:#c594c5;">RUN </span><span>python -m venv /opt/venv
+</span><span style="color:#c594c5;">ENV </span><span>PATH=</span><span style="color:#5fb3b3;">&quot;</span><span style="color:#99c794;">/opt/venv/bin:$PATH</span><span style="color:#5fb3b3;">&quot;
+</span><span>
+</span><span style="color:#c594c5;">COPY</span><span> requirements/common.txt requirements.txt
+</span><span style="color:#c594c5;">RUN </span><span>pip install --upgrade pip &amp;&amp; pip install --no-cache-dir -r requirements.txt
+</span><span>
+</span><span>
+</span><span style="color:#c594c5;">FROM</span><span> python:3.7-slim
+</span><span>
+</span><span style="color:#5f6364;"># Set unbuffered output to make sure all logs are printed and not stuck in buffer
+</span><span style="color:#c594c5;">ENV </span><span>PYTHONUNBUFFERED 1
+</span><span>
+</span><span style="color:#c594c5;">RUN </span><span>mkdir -p /c3po
+</span><span style="color:#c594c5;">COPY</span><span> --from=builder /opt/venv /opt/venv
+</span><span style="color:#c594c5;">ENV </span><span>PATH=</span><span style="color:#5fb3b3;">&quot;</span><span style="color:#99c794;">/opt/venv/bin:$PATH</span><span style="color:#5fb3b3;">&quot;
+</span><span>
+</span><span style="color:#c594c5;">ADD </span><span>. /c3po/
+</span><span style="color:#c594c5;">WORKDIR </span><span>/c3po
+</span><span style="color:#c594c5;">RUN </span><span>pip install -e .
+</span><span>
+</span><span style="color:#c594c5;">ENV </span><span>PYTHONPATH=/c3po
+</span><span>
+</span><span style="color:#c594c5;">COPY</span><span> entrypoint.sh /entrypoint.sh
+</span><span style="color:#c594c5;">RUN </span><span>chmod +x /entrypoint.sh
+</span><span style="color:#c594c5;">EXPOSE </span><span>8000
+</span><span style="color:#5fb3b3;">ENTRYPOINT </span><span>[</span><span style="color:#5fb3b3;">&quot;</span><span style="color:#99c794;">/entrypoint.sh</span><span style="color:#5fb3b3;">&quot;</span><span>]
+</span><span>
+</span></code></pre>
+<p>Let's see how this build goes, :crossed_fingers:</p>
+<p><img src="https://mukul-mehta.in/til/reducing-container-size/multistage.jpg" alt="Multistage Build" /></p>
+<p>Daaaaamn! We're down to 196 MB, which is a fifth of our original 1.03 GB image. Hitting a couple of endpoints, and messing around with settings, and everything seems to work pretty well (which makes sense, since nothing really changed with our app)</p>
+<p>I don't think there's anything further I'm going to be trying ATM. Using python slim as a base, and switching to multistage builds is magical and I'm pretty satisfied with our final image being just 20% the size of our original image, with a 50% reduction in build time!</p>
+<p>Do let me know of other things I could try. I'd love to try those out!</p>
+<h2 id="references">References</h2>
+<ul>
+<li><a href="https://pythonspeed.com/articles/alpine-docker-python/">https://pythonspeed.com/articles/alpine-docker-python/</a></li>
+<li><a href="https://medium.com/swlh/alpine-slim-stretch-buster-jessie-bullseye-bookworm-what-are-the-differences-in-docker-62171ed4531d">https://medium.com/swlh/alpine-slim-stretch-buster-jessie-bullseye-bookworm-what-are-the-differences-in-docker-62171ed4531d</a></li>
+<li><a href="https://blog.realkinetic.com/building-minimal-docker-containers-for-python-applications-37d0272c52f3">https://blog.realkinetic.com/building-minimal-docker-containers-for-python-applications-37d0272c52f3</a></li>
+<li><a href="https://docs.docker.com/develop/develop-images/multistage-build/">https://docs.docker.com/develop/develop-images/multistage-build/</a></li>
+</ul>
+
+    
+        
+            <h1>Comments</h1>
+            <script src="https://utteranc.es/client.js"
+                    repo="mukul-mehta/mukul-mehta.github.io"
+                    issue-term="pathname"
+                    label="comment"
+                    theme="preferred-color-scheme"
+                    crossorigin="anonymous"
+                    async>
+            </script>
+        
+    
+
+  </div>
+  <script
+    src="https://mukul-mehta.in/main.js"
+    type="text/javascript">
+  </script>
+  
+    <div class="section bottom-menu">
+        <hr/>
+        <p>
+            
+                
+                    <a href="&#x2F;about">about</a>
+                    &#183;
+                
+                    <a href="&#x2F;posts">posts</a>
+                    &#183;
+                
+                    <a href="&#x2F;til">t.i.l.</a>
+                    &#183;
+                
+                    <a href="&#x2F;Mukul_Mehta-Resume.pdf">resume</a>
+                    &#183;
+                
+            
+            <a href="https:&#x2F;&#x2F;mukul-mehta.in">
+                home
+            </a>
+            &#183;
+            <a href="https:&#x2F;&#x2F;github.com&#x2F;mukul-mehta">
+                github
+            </a>
+            &#183;
+            <a href="https:&#x2F;&#x2F;twitter.com&#x2F;mukulmehta_">
+                twitter
+            </a>
+            &#183;
+            <a href="https:&#x2F;&#x2F;mukul-mehta.in&#x2F;atom.xml">
+                rss
+            </a>
+        </p>
+    </div>
+
+  <script async defer data-website-id="00b415fd-978e-4bcb-a280-90039a67a557" src="https://umami.mukul-mehta.in/umami.js"></script>
+</div>
+
+    <script
+      type="text/javascript"
+      crossorigin="anonymous"
+      integrity="sha256-NkH6G4XRcQ5Bsfs7O6yh9mw1SJLEOJWCtWqko6VjF34="
+      src="https://cdn.jsdelivr.net/npm/chart.xkcd@1.1/dist/chart.xkcd.min.js"
+    ></script>
+    <script async defer data-website-id="00b415fd-978e-4bcb-a280-90039a67a557" src="https://umami.mukul-mehta.in/umami.js"></script>
+  </body>
+</html>

@@ -1,0 +1,480 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
+    <title>Mukul Mehta</title>
+    <link rel="self" type="application/atom+xml" href="https://mukul-mehta.in/atom.xml"/>
+    <link rel="alternate" type="text/html" href="https://mukul-mehta.in"/>
+    <generator uri="https://www.getzola.org/">Zola</generator>
+    <updated>2021-06-21T00:00:00+00:00</updated>
+    <id>https://mukul-mehta.in/atom.xml</id>
+    <entry xml:lang="en">
+        <title>Switching from Disqus to utteranc.es for comments</title>
+        <published>2021-06-21T00:00:00+00:00</published>
+        <updated>2021-06-21T00:00:00+00:00</updated>
+        
+        <author>
+          <name>
+            
+              Unknown
+            
+          </name>
+        </author>
+        
+        <link rel="alternate" type="text/html" href="https://mukul-mehta.in/til/moving-to-utterances/"/>
+        <id>https://mukul-mehta.in/til/moving-to-utterances/</id>
+        
+        <content type="html" xml:base="https://mukul-mehta.in/til/moving-to-utterances/">&lt;p&gt;I&#x27;ve been using Disqus to enable comments on this blog, and I didn&#x27;t put a lot of thought into the decision to choose Disqus (In my mind Disqus is a de-facto standard for comments).&lt;&#x2F;p&gt;
+&lt;p&gt;Although I don&#x27;t use it a lot, I have 2 major issues with Disqus:&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;Disqus emails often end up in spam, and I have a really hard time configuring correct email settings for Disqus&lt;&#x2F;li&gt;
+&lt;li&gt;Disqus does some &lt;a href=&quot;https:&#x2F;&#x2F;supunkavinda.blog&#x2F;disqus&quot;&gt;shady stuff, with regards to tracking&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;p&gt;A &lt;a href=&quot;https:&#x2F;&#x2F;parth-paradkar.github.io&#x2F;&quot;&gt;friend&#x27;s&lt;&#x2F;a&gt; blog uses &lt;a href=&quot;https:&#x2F;&#x2F;utteranc.es&#x2F;&quot;&gt;utterance.es&lt;&#x2F;a&gt;, which describes itself as a &lt;em&gt;lightweight  comments widget built on GitHub Issues&lt;&#x2F;em&gt;. For each post, it opens an issue in a pre-configured repository, and user comments appear as comments on the linked issue. I really like the idea, and wanted to make the switch.&lt;&#x2F;p&gt;
+&lt;p&gt;Making the switch took me 5 minutes, and everything was ready to go!&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;configuring-utterance-es&quot;&gt;Configuring utterance.es&lt;&#x2F;h2&gt;
+&lt;p&gt;The first step is to install the utterance.es app on the repository you want to use. This is pretty simple, and is the same as allowing a 3rd party GitHub application.&lt;&#x2F;p&gt;
+&lt;p&gt;Next, we need to add the snippet that enables comments. This needs to be added to the &lt;code&gt;templates&#x2F;page.html&lt;&#x2F;code&gt; file since we want comments to be enabled below each page (either a post&#x2F;til). This is the snippet, for my website&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;javascript&quot; style=&quot;background-color:#2b2c2f;color:#cccece;&quot; class=&quot;language-javascript &quot;&gt;&lt;code class=&quot;language-javascript&quot; data-lang=&quot;javascript&quot;&gt;&lt;span style=&quot;color:#5fb3b3;&quot;&gt;&amp;lt;&lt;&#x2F;span&gt;&lt;span&gt;script src&lt;&#x2F;span&gt;&lt;span style=&quot;color:#5fb3b3;&quot;&gt;=&amp;quot;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#99c794;&quot;&gt;https:&#x2F;&#x2F;utteranc.es&#x2F;client.js&lt;&#x2F;span&gt;&lt;span style=&quot;color:#5fb3b3;&quot;&gt;&amp;quot;
+&lt;&#x2F;span&gt;&lt;span&gt;    repo&lt;&#x2F;span&gt;&lt;span style=&quot;color:#5fb3b3;&quot;&gt;=&amp;quot;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#99c794;&quot;&gt;mukul-mehta&#x2F;mukul-mehta.github.io&lt;&#x2F;span&gt;&lt;span style=&quot;color:#5fb3b3;&quot;&gt;&amp;quot;
+&lt;&#x2F;span&gt;&lt;span&gt;    issue&lt;&#x2F;span&gt;&lt;span style=&quot;color:#5fb3b3;&quot;&gt;-&lt;&#x2F;span&gt;&lt;span&gt;term&lt;&#x2F;span&gt;&lt;span style=&quot;color:#5fb3b3;&quot;&gt;=&amp;quot;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#99c794;&quot;&gt;pathname&lt;&#x2F;span&gt;&lt;span style=&quot;color:#5fb3b3;&quot;&gt;&amp;quot;
+&lt;&#x2F;span&gt;&lt;span&gt;    label&lt;&#x2F;span&gt;&lt;span style=&quot;color:#5fb3b3;&quot;&gt;=&amp;quot;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#99c794;&quot;&gt;comment&lt;&#x2F;span&gt;&lt;span style=&quot;color:#5fb3b3;&quot;&gt;&amp;quot;
+&lt;&#x2F;span&gt;&lt;span&gt;    theme&lt;&#x2F;span&gt;&lt;span style=&quot;color:#5fb3b3;&quot;&gt;=&amp;quot;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#99c794;&quot;&gt;preferred-color-scheme&lt;&#x2F;span&gt;&lt;span style=&quot;color:#5fb3b3;&quot;&gt;&amp;quot;
+&lt;&#x2F;span&gt;&lt;span&gt;    crossorigin&lt;&#x2F;span&gt;&lt;span style=&quot;color:#5fb3b3;&quot;&gt;=&amp;quot;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#99c794;&quot;&gt;anonymous&lt;&#x2F;span&gt;&lt;span style=&quot;color:#5fb3b3;&quot;&gt;&amp;quot;
+&lt;&#x2F;span&gt;&lt;span&gt;    async&lt;&#x2F;span&gt;&lt;span style=&quot;color:#5fb3b3;&quot;&gt;&amp;gt;
+&lt;&#x2F;span&gt;&lt;span&gt; &lt;&#x2F;span&gt;&lt;span style=&quot;color:#5fb3b3;&quot;&gt;&amp;lt;&#x2F;&lt;&#x2F;span&gt;&lt;span&gt;script&lt;&#x2F;span&gt;&lt;span style=&quot;color:#5fb3b3;&quot;&gt;&amp;gt;
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;The &lt;code&gt;repo&lt;&#x2F;code&gt; field is set to the repository I want to configure issues on, &lt;code&gt;issue-term&lt;&#x2F;code&gt; dictates the title of the issue (pathname of the specific post in this case, can also be the full URL), &lt;code&gt;label&lt;&#x2F;code&gt; is an optional field that adds labels to comments created via utteranc.es, and &lt;code&gt;theme&lt;&#x2F;code&gt; can be chosen from a list on the utteranc.es website.&lt;&#x2F;p&gt;
+&lt;p&gt;And done! Configuring utteranc.es was literally that easy. Would definitely recommend switching, if you use Disqus. The only issues I see are:&lt;&#x2F;p&gt;
+&lt;ol&gt;
+&lt;li&gt;If you don&#x27;t have a GitHub account, or don&#x27;t want to link your GitHub account to comments you make, there&#x27;s no way to comment&lt;&#x2F;li&gt;
+&lt;li&gt;No threads: Disqus had threads, which was a logical way to structure a conversation, and GitHub issues does not support threads :(&lt;&#x2F;li&gt;
+&lt;&#x2F;ol&gt;
+</content>
+        
+    </entry>
+    <entry xml:lang="en">
+        <title>Reducing Docker container sizes for Python apps</title>
+        <published>2021-04-29T00:00:00+00:00</published>
+        <updated>2021-04-29T00:00:00+00:00</updated>
+        
+        <author>
+          <name>
+            
+              Unknown
+            
+          </name>
+        </author>
+        
+        <link rel="alternate" type="text/html" href="https://mukul-mehta.in/til/reducing-container-size/"/>
+        <id>https://mukul-mehta.in/til/reducing-container-size/</id>
+        
+        <content type="html" xml:base="https://mukul-mehta.in/til/reducing-container-size/">&lt;p&gt;Over the past couple days, I was working on AWS infra for LTTKGP (I&#x27;ve written a &lt;a href=&quot;https:&#x2F;&#x2F;mukul-mehta.in&#x2F;posts&#x2F;aws-experiments&#x2F;&quot;&gt;blog&lt;&#x2F;a&gt; about it). One of the major services, C-3PO is built with Flask-REST, and we use Docker to deploy it (Using AWS ECS).&lt;&#x2F;p&gt;
+&lt;p&gt;The image that we use takes some time to build and push to AWS ECR. I had to do this a couple of times and it was quite frustrating to wait. I googled a couple ways to reduce the size of the container and tried some of them&lt;&#x2F;p&gt;
+&lt;p&gt;To begin with, here&#x27;s our original image. It&#x27;s based on Python 3.7, and we cache dependencies when installing with &lt;code&gt;pip&lt;&#x2F;code&gt;. The container is 1.03 GB in size, and takes around 195 seconds to build, on my laptop.&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;img src=&quot;https:&#x2F;&#x2F;mukul-mehta.in&#x2F;til&#x2F;reducing-container-size&#x2F;vanilla.jpg&quot; alt=&quot;Current image that we use&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;attempt-1-disable-pip-s-dependency-caching&quot;&gt;Attempt #1: Disable pip&#x27;s dependency caching&lt;&#x2F;h2&gt;
+&lt;p&gt;Using the &lt;code&gt;--no-cache-dir&lt;&#x2F;code&gt; flag, we can disable caching dependencies installed via pip. This should reduce the size by a couple MBs atleast. Since the cache is useless inside the container, this has no unintended side-effects.&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;img src=&quot;https:&#x2F;&#x2F;mukul-mehta.in&#x2F;til&#x2F;reducing-container-size&#x2F;vanilla-no-cache.jpg&quot; alt=&quot;Vanilla image with cache disabled&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;The size reduced by 38 MB or so, yaaay I guess&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;attempt-2-using-python-slim-as-base-image&quot;&gt;Attempt #2: Using python-slim as base image&lt;&#x2F;h2&gt;
+&lt;p&gt;Right now, we&#x27;re using &lt;code&gt;python:3.7&lt;&#x2F;code&gt; as our base image. This image is based on Debian Buster (Debian 10), and comes with a ton of packages, most of which we do not need. We could use &lt;code&gt;python:3.7-slim&lt;&#x2F;code&gt; as our base image, it contains only the packages needed to run python (it&#x27;s still based on Debian)&lt;&#x2F;p&gt;
+&lt;p&gt;There&#x27;s 2 caveats though:&lt;&#x2F;p&gt;
+&lt;ol&gt;
+&lt;li&gt;We use uWSGI, which needs GCC and glibc during installation, and we need to install those via &lt;code&gt;apt&lt;&#x2F;code&gt;&lt;&#x2F;li&gt;
+&lt;li&gt;To install the &lt;code&gt;psycopg2&lt;&#x2F;code&gt; package, we need &lt;code&gt;pg_config&lt;&#x2F;code&gt;. To avoid installing it from source, we install the &lt;code&gt;&#x27;psycopg2-binary&lt;&#x2F;code&gt; package instead&lt;&#x2F;li&gt;
+&lt;&#x2F;ol&gt;
+&lt;pre data-lang=&quot;dockerfile&quot; style=&quot;background-color:#2b2c2f;color:#cccece;&quot; class=&quot;language-dockerfile &quot;&gt;&lt;code class=&quot;language-dockerfile&quot; data-lang=&quot;dockerfile&quot;&gt;&lt;span style=&quot;color:#c594c5;&quot;&gt;FROM&lt;&#x2F;span&gt;&lt;span&gt; python:3.7-slim
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#c594c5;&quot;&gt;RUN &lt;&#x2F;span&gt;&lt;span&gt;apt-get update \
+&lt;&#x2F;span&gt;&lt;span&gt;    &amp;amp;&amp;amp; apt-get install gcc -y \
+&lt;&#x2F;span&gt;&lt;span&gt;    &amp;amp;&amp;amp; apt-get clean
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;&lt;img src=&quot;https:&#x2F;&#x2F;mukul-mehta.in&#x2F;til&#x2F;reducing-container-size&#x2F;slim.jpg&quot; alt=&quot;Using Python Slim as base image&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;Damn, we&#x27;re down to 343MB. It took around 100 seconds to build, which is half the time to build the original image. Since we haven&#x27;t made any changes to our python app as such, I expect it to run properly. I tried hitting a couple endpoints manually (obviously a pretty crude way of testing) and it works alright!&lt;&#x2F;p&gt;
+&lt;h4 id=&quot;using-alpine-as-base&quot;&gt;Using Alpine as base&lt;&#x2F;h4&gt;
+&lt;p&gt;We could use &lt;code&gt;python:3.7-alpine&lt;&#x2F;code&gt; as a base image for our container. Alpine is a lightweight distro, that is very popular with containers. It ships with musl and busybox, instead of glibc and GNU coreutils. I did read on a couple places though that unless space is a major constraint, it&#x27;s not a great idea to use alpine as a base image for python apps, since all wheels don&#x27;t build, and there are issues with debugging&lt;&#x2F;p&gt;
+&lt;p&gt;Also, uWSGI needs glibc to install by default. There are ways to install it using musl but I&#x27;ll need to try those. There&#x27;s also other issues, &lt;code&gt;psycopg2&lt;&#x2F;code&gt; needs to be built from source etc&lt;&#x2F;p&gt;
+&lt;p&gt;For now, I&#x27;m not trying the alpine base image&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;attempt-3-multistage-builds&quot;&gt;Attempt #3: Multistage builds&lt;&#x2F;h2&gt;
+&lt;p&gt;Docker has this cool idea of multistage builds, where you can install all of your dependencies in one image, and copy just the installed dependencies over to a new image. We use this second image as our final image, in which our app runs.&lt;&#x2F;p&gt;
+&lt;p&gt;To create a multistage build, in our first image, we install all dependencies in a virtualenv (since it&#x27;ll help keep everything in one folder). Then, we copy over this created venv to our final image, and add it to PATH. Our final image now just the venv folder, and no extra dependencies (such as &lt;code&gt;gcc&lt;&#x2F;code&gt; that we had installed in our first image)&lt;&#x2F;p&gt;
+&lt;p&gt;Here&#x27;s the Dockerfile for reference&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;dockerfile&quot; style=&quot;background-color:#2b2c2f;color:#cccece;&quot; class=&quot;language-dockerfile &quot;&gt;&lt;code class=&quot;language-dockerfile&quot; data-lang=&quot;dockerfile&quot;&gt;&lt;span style=&quot;color:#5f6364;&quot;&gt;# Base Python image for container
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#c594c5;&quot;&gt;FROM&lt;&#x2F;span&gt;&lt;span&gt; python:3.7-slim &lt;&#x2F;span&gt;&lt;span style=&quot;color:#c594c5;&quot;&gt;AS &lt;&#x2F;span&gt;&lt;span&gt;builder
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#c594c5;&quot;&gt;RUN &lt;&#x2F;span&gt;&lt;span&gt;apt-get update \
+&lt;&#x2F;span&gt;&lt;span&gt;    &amp;amp;&amp;amp; apt-get install gcc -y \
+&lt;&#x2F;span&gt;&lt;span&gt;    &amp;amp;&amp;amp; apt-get clean
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#c594c5;&quot;&gt;RUN &lt;&#x2F;span&gt;&lt;span&gt;python -m venv &#x2F;opt&#x2F;venv
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#c594c5;&quot;&gt;ENV &lt;&#x2F;span&gt;&lt;span&gt;PATH=&lt;&#x2F;span&gt;&lt;span style=&quot;color:#5fb3b3;&quot;&gt;&amp;quot;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#99c794;&quot;&gt;&#x2F;opt&#x2F;venv&#x2F;bin:$PATH&lt;&#x2F;span&gt;&lt;span style=&quot;color:#5fb3b3;&quot;&gt;&amp;quot;
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#c594c5;&quot;&gt;COPY&lt;&#x2F;span&gt;&lt;span&gt; requirements&#x2F;common.txt requirements.txt
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#c594c5;&quot;&gt;RUN &lt;&#x2F;span&gt;&lt;span&gt;pip install --upgrade pip &amp;amp;&amp;amp; pip install --no-cache-dir -r requirements.txt
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#c594c5;&quot;&gt;FROM&lt;&#x2F;span&gt;&lt;span&gt; python:3.7-slim
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#5f6364;&quot;&gt;# Set unbuffered output to make sure all logs are printed and not stuck in buffer
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#c594c5;&quot;&gt;ENV &lt;&#x2F;span&gt;&lt;span&gt;PYTHONUNBUFFERED 1
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#c594c5;&quot;&gt;RUN &lt;&#x2F;span&gt;&lt;span&gt;mkdir -p &#x2F;c3po
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#c594c5;&quot;&gt;COPY&lt;&#x2F;span&gt;&lt;span&gt; --from=builder &#x2F;opt&#x2F;venv &#x2F;opt&#x2F;venv
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#c594c5;&quot;&gt;ENV &lt;&#x2F;span&gt;&lt;span&gt;PATH=&lt;&#x2F;span&gt;&lt;span style=&quot;color:#5fb3b3;&quot;&gt;&amp;quot;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#99c794;&quot;&gt;&#x2F;opt&#x2F;venv&#x2F;bin:$PATH&lt;&#x2F;span&gt;&lt;span style=&quot;color:#5fb3b3;&quot;&gt;&amp;quot;
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#c594c5;&quot;&gt;ADD &lt;&#x2F;span&gt;&lt;span&gt;. &#x2F;c3po&#x2F;
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#c594c5;&quot;&gt;WORKDIR &lt;&#x2F;span&gt;&lt;span&gt;&#x2F;c3po
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#c594c5;&quot;&gt;RUN &lt;&#x2F;span&gt;&lt;span&gt;pip install -e .
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#c594c5;&quot;&gt;ENV &lt;&#x2F;span&gt;&lt;span&gt;PYTHONPATH=&#x2F;c3po
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#c594c5;&quot;&gt;COPY&lt;&#x2F;span&gt;&lt;span&gt; entrypoint.sh &#x2F;entrypoint.sh
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#c594c5;&quot;&gt;RUN &lt;&#x2F;span&gt;&lt;span&gt;chmod +x &#x2F;entrypoint.sh
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#c594c5;&quot;&gt;EXPOSE &lt;&#x2F;span&gt;&lt;span&gt;8000
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#5fb3b3;&quot;&gt;ENTRYPOINT &lt;&#x2F;span&gt;&lt;span&gt;[&lt;&#x2F;span&gt;&lt;span style=&quot;color:#5fb3b3;&quot;&gt;&amp;quot;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#99c794;&quot;&gt;&#x2F;entrypoint.sh&lt;&#x2F;span&gt;&lt;span style=&quot;color:#5fb3b3;&quot;&gt;&amp;quot;&lt;&#x2F;span&gt;&lt;span&gt;]
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;Let&#x27;s see how this build goes, :crossed_fingers:&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;img src=&quot;https:&#x2F;&#x2F;mukul-mehta.in&#x2F;til&#x2F;reducing-container-size&#x2F;multistage.jpg&quot; alt=&quot;Multistage Build&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;Daaaaamn! We&#x27;re down to 196 MB, which is a fifth of our original 1.03 GB image. Hitting a couple of endpoints, and messing around with settings, and everything seems to work pretty well (which makes sense, since nothing really changed with our app)&lt;&#x2F;p&gt;
+&lt;p&gt;I don&#x27;t think there&#x27;s anything further I&#x27;m going to be trying ATM. Using python slim as a base, and switching to multistage builds is magical and I&#x27;m pretty satisfied with our final image being just 20% the size of our original image, with a 50% reduction in build time!&lt;&#x2F;p&gt;
+&lt;p&gt;Do let me know of other things I could try. I&#x27;d love to try those out!&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;references&quot;&gt;References&lt;&#x2F;h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;https:&#x2F;&#x2F;pythonspeed.com&#x2F;articles&#x2F;alpine-docker-python&#x2F;&quot;&gt;https:&#x2F;&#x2F;pythonspeed.com&#x2F;articles&#x2F;alpine-docker-python&#x2F;&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;a href=&quot;https:&#x2F;&#x2F;medium.com&#x2F;swlh&#x2F;alpine-slim-stretch-buster-jessie-bullseye-bookworm-what-are-the-differences-in-docker-62171ed4531d&quot;&gt;https:&#x2F;&#x2F;medium.com&#x2F;swlh&#x2F;alpine-slim-stretch-buster-jessie-bullseye-bookworm-what-are-the-differences-in-docker-62171ed4531d&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;a href=&quot;https:&#x2F;&#x2F;blog.realkinetic.com&#x2F;building-minimal-docker-containers-for-python-applications-37d0272c52f3&quot;&gt;https:&#x2F;&#x2F;blog.realkinetic.com&#x2F;building-minimal-docker-containers-for-python-applications-37d0272c52f3&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;a href=&quot;https:&#x2F;&#x2F;docs.docker.com&#x2F;develop&#x2F;develop-images&#x2F;multistage-build&#x2F;&quot;&gt;https:&#x2F;&#x2F;docs.docker.com&#x2F;develop&#x2F;develop-images&#x2F;multistage-build&#x2F;&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+</content>
+        
+    </entry>
+    <entry xml:lang="en">
+        <title>Messing around with AWS for LTTKGP!</title>
+        <published>2021-04-20T00:00:00+00:00</published>
+        <updated>2021-04-20T00:00:00+00:00</updated>
+        
+        <author>
+          <name>
+            
+              Unknown
+            
+          </name>
+        </author>
+        
+        <link rel="alternate" type="text/html" href="https://mukul-mehta.in/posts/aws-experiments/"/>
+        <id>https://mukul-mehta.in/posts/aws-experiments/</id>
+        
+        <content type="html" xml:base="https://mukul-mehta.in/posts/aws-experiments/">&lt;p&gt;After hours of minimal success at trying to setup LTTKGP on AWS, I&#x27;ve decided to start over from scratch, with a tiny app and blog my experiments.&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;strong&gt;Warning:&lt;&#x2F;strong&gt; This is my first time using AWS beyond just plain old EC2 and S3 and I apologise for any mistakes. Also, this might get really long. you&#x27;ve been warned :)&lt;&#x2F;p&gt;
+&lt;h1 id=&quot;prelude&quot;&gt;Prelude&lt;&#x2F;h1&gt;
+&lt;p&gt;Last summer, I started working on &lt;a href=&quot;https:&#x2F;&#x2F;lttkgp.com&quot;&gt;LTTKGP&lt;&#x2F;a&gt; with a bunch of awesome people. LTTKGP fetches songs posted on the FB Group &lt;a href=&quot;https:&#x2F;&#x2F;www.facebook.com&#x2F;groups&#x2F;lttkgp&quot;&gt;Listen To This KGP&lt;&#x2F;a&gt;, collects metadata, organizes them into feeds, and has a pretty cool webplayer that lets user play these collections. The project is open source and code can be found on the &lt;a href=&quot;https:&#x2F;&#x2F;github.com&#x2F;lttkgp&quot;&gt;GitHub org&lt;&#x2F;a&gt;.&lt;&#x2F;p&gt;
+&lt;p&gt;LTTKGP has a couple of components, and we use AWS to deploy 2 major services&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;R2-D2&lt;&#x2F;strong&gt;: This is the “Facebook connector” that polls the Facebook group at a pre-defined interval and persists the Graph API response in a No-SQL database. This data is then sent one at a time to C-3PO. The NoSQL database of choice is Amazon AWS’s DynamoDB&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;strong&gt;C-3PO&lt;&#x2F;strong&gt;: The central API server powering the website. C-3PO builds on top of the above projects by listening to new posts coming in from R2-D2, fetching metadata, and storing in a relational database. The website essentially make calls to C-3PO to fetch data and then C-3PO checks its databases, filters and returns songs in a specific format. The database of choice is PostgresQL on AWS RDS&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;p&gt;The other major service is Falcon, the beautiful UI that brings it all together. Falcon is deployed on Netlify and we use Cloudflare to manage DNS for the entire project&lt;&#x2F;p&gt;
+&lt;h1 id=&quot;existing-aws-infrastructure&quot;&gt;Existing AWS Infrastructure&lt;&#x2F;h1&gt;
+&lt;p&gt;To deploy LTTKGP, &lt;a href=&quot;https:&#x2F;&#x2F;github.com&#x2F;ghostwriternr&quot;&gt;Naresh&lt;&#x2F;a&gt; came up with a pretty cool architecture (and daunting looking :P) which we&#x27;ve been using to deploy, for a couple of months now&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;img src=&quot;https:&#x2F;&#x2F;mukul-mehta.in&#x2F;posts&#x2F;aws-experiments&#x2F;LTTKGP-ExistingArch.jpeg&quot; alt=&quot;The present architecture&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;A top level overview is as follows:&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;All resources lie inside our VPC, which is the big container.&lt;&#x2F;li&gt;
+&lt;li&gt;There are 2 databases -&amp;gt; DynamoDB, a NoSQL database that stores raw FB posts when R2-D2 fetches them and a Postgres RDS instance to store posts after C-3PO processes them.&lt;&#x2F;li&gt;
+&lt;li&gt;We upload docker images for both C-3PO and R2-D2 to ECR and create task definitions using those images. Task definitions are essentially recipes for the actual services that will run those containers.&lt;&#x2F;li&gt;
+&lt;li&gt;Both C-3PO and R2-D2 have their private and public subnets. The ECS services run inside the private subnets. Security groups control which ports are exposed in each of the subnets, and ensure that private subnets can be accessed only by resources inside of the VPC (and have proper access)&lt;&#x2F;li&gt;
+&lt;li&gt;The Application Load Balancers (ALBs) redirect traffic from the outisde world to C-3PO and R2-D2. We need a NAT Gateway since both services are inside their private subnets and can&#x27;t access&#x2F;be accessed on the internet. This also means that routing tables and target groups have to be configured, using the EC2 dashboard&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;p&gt;(When this was set up, all I did was stare at the screen in constant awe!)&lt;&#x2F;p&gt;
+&lt;p&gt;The major issue with the present infra is that it&#x27;s pretty expensive mainly because of the NAT Gateway and using Fargate to manage instances, instead of self managing EC2 instances.&lt;&#x2F;p&gt;
+&lt;h1 id=&quot;mirroring-existing-infra&quot;&gt;Mirroring Existing Infra&lt;&#x2F;h1&gt;
+&lt;p&gt;Since we could make do without private subnets, by having tighter rules in our security groups, I attempted to replicate the present infra on my personal AWS account and mess around with it till I can get it working again.&lt;&#x2F;p&gt;
+&lt;p&gt;The first thing I did was exactly replicate the infra we were using. It took me a couple hours but I set it up and can be accessed at:&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;C-3PO&lt;&#x2F;strong&gt;: https:&#x2F;&#x2F;api.metamehta.in&#x2F;&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;strong&gt;R2-D2:&lt;&#x2F;strong&gt; https:&#x2F;&#x2F;data.metamehta.in&#x2F;&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;strong&gt;Falcon:&lt;&#x2F;strong&gt; https:&#x2F;&#x2F;musik.metamehta.in&#x2F;&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;h1 id=&quot;experiments&quot;&gt;Experiments!&lt;&#x2F;h1&gt;
+&lt;p&gt;I found a couple of cool Medium blogs (&lt;a href=&quot;https:&#x2F;&#x2F;medium.com&#x2F;swlh&#x2F;how-to-deploy-an-application-to-aws-using-docker-ecs-and-ecr-aa7785fc9667&quot;&gt;One&lt;&#x2F;a&gt;, &lt;a href=&quot;https:&#x2F;&#x2F;medium.com&#x2F;swlh&#x2F;deploying-a-dockerised-web-app-using-aws-elastic-container-service-ecs-8373ec9681d2&quot;&gt;Two&lt;&#x2F;a&gt;) that descibe how to deploy to ECS using self-hosted EC2 instances but I wasn&#x27;t able to get C-3PO up and running. I&#x27;ve now decided to start from scratch, with a simple Flask app&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;starting-from-scratch-part-1&quot;&gt;Starting from Scratch - Part 1&lt;&#x2F;h2&gt;
+&lt;p&gt;The first step is creating a new VPC for our use.&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;img src=&quot;https:&#x2F;&#x2F;mukul-mehta.in&#x2F;posts&#x2F;aws-experiments&#x2F;VPC-new.png&quot; alt=&quot;The new VPC&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;I&#x27;ll create 2 new subnets inside the VPC. To use a elastic load balancer, we&#x27;ll need atleast 2 subnets in different availability zones:&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;helloworld-public-1: CIDR 10.0.2.0&#x2F;24 in ap-south-1a&lt;&#x2F;li&gt;
+&lt;li&gt;Helloworld-public-2: CIDR 10.0.4.0&#x2F;24 in ap-south-1b&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;p&gt;I also create a route table, with both of these subnets and a internet gateway that is attached to our VPC. Next, I&#x27;ll setup a new flask application, dockerize it and create an ECS cluster.&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;strong&gt;NOTE:&lt;&#x2F;strong&gt; In your routing table, add a route from 0.0.0.0&#x2F;0 to the above configured internet gateway. I didn&#x27;t and it took me some time to figure it out&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;creating-our-test-flask-app&quot;&gt;Creating our test Flask app&lt;&#x2F;h2&gt;
+&lt;p&gt;To begin, I&#x27;ll use a simple hello world app. I&#x27;ll keep iterating if I&#x27;m able to successfully deploy this first&lt;&#x2F;p&gt;
+&lt;p&gt;Here&#x27;s the repository: https:&#x2F;&#x2F;github.com&#x2F;mukul-mehta&#x2F;Flask-ECS-Adventures&lt;&#x2F;p&gt;
+&lt;h3 id=&quot;step-1-pushing-the-image-to-ecr&quot;&gt;Step 1: Pushing the image to ECR&lt;&#x2F;h3&gt;
+&lt;p&gt;I&#x27;ve created a new private repository on AWS ECR called &lt;code&gt;flask-ecs&lt;&#x2F;code&gt;, to which I&#x27;ll push my image. Once I&#x27;m done logging in, I build, tag and then push the image to the repository&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;img src=&quot;https:&#x2F;&#x2F;mukul-mehta.in&#x2F;posts&#x2F;aws-experiments&#x2F;ECR.jpg&quot; alt=&quot;Pushing image to ECR&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
+&lt;h3 id=&quot;step-2-create-an-empty-ecs-cluster&quot;&gt;Step 2: Create an empty ECS cluster&lt;&#x2F;h3&gt;
+&lt;p&gt;This should be simple hopefully. Go to ECS, create a new cluster and select template as EC2 Linux + Networking, give it a name and choose empty cluster on the next page&lt;&#x2F;p&gt;
+&lt;h3 id=&quot;step-3-create-a-launch-template-for-ec2-instances&quot;&gt;Step 3: Create a launch template for EC2 instances&lt;&#x2F;h3&gt;
+&lt;p&gt;This is where it started to get tricky for me. Do I need to setup a launch template and a autoscaling group, or can I do with just creating an instance for now :confused:&lt;&#x2F;p&gt;
+&lt;p&gt;Let&#x27;s try creating a launch template for now.&lt;&#x2F;p&gt;
+&lt;p&gt;Since we need an instance for ECS, we&#x27;ll choose a community AMI that it optimized for ECS. The latest one can be found &lt;a href=&quot;https:&#x2F;&#x2F;ap-south-1.console.aws.amazon.com&#x2F;systems-manager&#x2F;parameters&#x2F;aws&#x2F;service&#x2F;ecs&#x2F;optimized-ami&#x2F;amazon-linux-2&#x2F;recommended&#x2F;image_id&#x2F;description?region=ap-south-1#&quot;&gt;here&lt;&#x2F;a&gt;. The AMI comes with a 30GB root volume by default, and I don&#x27;t think I&#x27;ll add more storage for now. I don&#x27;t specify an instance type in the launch template either. To add this instance to our ECS cluster, I add the following in user data (Advanced -&amp;gt; User data)&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;bash&quot; style=&quot;background-color:#2b2c2f;color:#cccece;&quot; class=&quot;language-bash &quot;&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span style=&quot;color:#5f6364;&quot;&gt;#!&#x2F;bin&#x2F;bash
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#6699cc;&quot;&gt;echo ECS_CLUSTER=your_cluster_name &lt;&#x2F;span&gt;&lt;span style=&quot;color:#5fb3b3;&quot;&gt;&amp;gt;&amp;gt;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#6699cc;&quot;&gt; &#x2F;etc&#x2F;ecs&#x2F;ecs.config
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;I&#x27;ll create just one instance for now. a t2.micro using the above launch template. I select the subnet as &lt;code&gt;helloworld-public-1&lt;&#x2F;code&gt; and use the default security group for now. I also need to create a new IAM Role for the instance, as mentioned in &lt;a href=&quot;https:&#x2F;&#x2F;docs.aws.amazon.com&#x2F;AmazonECS&#x2F;latest&#x2F;developerguide&#x2F;launch_container_instance.html&quot;&gt;this guide&lt;&#x2F;a&gt;. The new IAM role has the follwing permissions:&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;img src=&quot;https:&#x2F;&#x2F;mukul-mehta.in&#x2F;posts&#x2F;aws-experiments&#x2F;IAM.jpg&quot; alt=&quot;IAM Role for ECS&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;Now, we have a t2.micro EC2 instance, running an Amazon Linux AMI that is optimized for ECS, with our custom IAM role and user data. We should now this instance attached to our ECS cluster :crossed_fingers:&lt;&#x2F;p&gt;
+&lt;p&gt;IT DIDN&#x27;T WORK :neutral_face:&lt;&#x2F;p&gt;
+&lt;p&gt;Okay, gotta do this all over again. I need to create an EC2 instance and make sure that it&#x27;s attached to the ECS cluster. Why is this so hard :disappointed:&lt;&#x2F;p&gt;
+&lt;p&gt;AWS&#x27;s documentation says that the correct IAM role to use is called &lt;code&gt;ecsInstanceRole&lt;&#x2F;code&gt;. There isn&#x27;t a profile with that name on my dashboard, let me create one using the instructions mentioned &lt;a href=&quot;https:&#x2F;&#x2F;docs.aws.amazon.com&#x2F;AmazonECS&#x2F;latest&#x2F;developerguide&#x2F;instance_IAM_role.html&quot;&gt;here&lt;&#x2F;a&gt;.&lt;&#x2F;p&gt;
+&lt;p&gt;Okay, this was my fault. Turns out I forgot to add a route in my routing table for this VPC. In order to use ECS, the instances need to have a route to reach the ECS service endpoints. For this, I need to add a route in my routing table, that routes to my internet gateway. Doing this fixed the problem and I can now see the EC2 instance in my ECS cluster&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;img src=&quot;https:&#x2F;&#x2F;mukul-mehta.in&#x2F;posts&#x2F;aws-experiments&#x2F;RouteTable.jpg&quot; alt=&quot;This is how the routing table should look&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
+&lt;h3 id=&quot;step-4-create-a-new-service-in-the-ecs-cluster&quot;&gt;Step 4: Create a new service in the ECS cluster&lt;&#x2F;h3&gt;
+&lt;h4 id=&quot;4-1-create-a-new-task-definition&quot;&gt;4.1: Create a new task definition&lt;&#x2F;h4&gt;
+&lt;p&gt;Before this, I need to setup a task definition. The task definition is a recipe for the service and specifies the image and hardware requirements for the task.&lt;&#x2F;p&gt;
+&lt;p&gt;In the task definition, I specify the URI of the container image (Which I pushed to ECR), a memory limit of 512MB and 512 CPU Units (Each CPU core is 1024 CPU units). I also need to add a port mapping, from 8000 in host to 8000 in the container, since my flask app is listening on port 8000 inside the container.&lt;&#x2F;p&gt;
+&lt;p&gt;Once we&#x27;re done with creating with task definition, I need to create a service using this task definition&lt;&#x2F;p&gt;
+&lt;h4 id=&quot;4-2-create-a-new-load-balancer&quot;&gt;4.2: Create a new load balancer&lt;&#x2F;h4&gt;
+&lt;p&gt;Before I can create a new service, I need to setup an Application Load Balancer and a Target Group. For now, I&#x27;ll setup a listener on port 80 instead of configuring a new certificate and setting up a HTTPS listener.&lt;&#x2F;p&gt;
+&lt;p&gt;Setting up the ALB should be fairly straightforward. Add a listener on port 80, for HTTP traffic, select the right VPC and subnets and the default security group. Then, setup a new target group that is listening on port 80 and protocol set to HTTP1. On our simple flask app, I setup a health check endpoint &lt;code&gt;&#x2F;health&lt;&#x2F;code&gt; that on success returns a status code of 200. We need a health check endpoint since the target group needs to know when a target is down. It sends requests to this health check endpoint every couple (5 AFAIK) minutes and if there are 2 consecutive failures (status code != 200), it marks a target as unhealthy. I don&#x27;t register any targets right now, since we&#x27;ll do that when we setup our service&lt;&#x2F;p&gt;
+&lt;p&gt;Now that the ALB is setup, I&#x27;ll go back to creating a new service&lt;&#x2F;p&gt;
+&lt;h4 id=&quot;4-3-creating-a-service&quot;&gt;4.3: Creating a service&lt;&#x2F;h4&gt;
+&lt;p&gt;Since we&#x27;re using self-managed EC2 instances, the type of service is EC2. I set the number of tasks to 1. Next, we add the above configured ALB to our service and add the container as a target. For now, I use a very simple autoscaling policy, with minimum tasks set to 1, desired tasks set to 1 and maximum number of tasks as 2, which runs when average CPU utilization for our task crosses 65% I&#x27;m sure this won&#x27;t trigger given our very simple app but nevertheless, we&#x27;re done!&lt;&#x2F;p&gt;
+&lt;h3 id=&quot;step-5-yaaaay-we-have-a-basic-app-up-and-running&quot;&gt;Step 5: Yaaaay, we have a basic app up and running!&lt;&#x2F;h3&gt;
+&lt;p&gt;Now that we have our service created, it should&#x27;ve started a task (Which is a running instance of that service). I see a running task :)&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;img src=&quot;https:&#x2F;&#x2F;mukul-mehta.in&#x2F;posts&#x2F;aws-experiments&#x2F;cluster.jpg&quot; alt=&quot;ECS Clusters Dashboard&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;(As expected, CPU utilization is extremely low)&lt;&#x2F;p&gt;
+&lt;p&gt;Since our ALB is internet facing, we should be able to access it directly and it should work and it does! Here&#x27;s the link: &lt;a href=&quot;http:&#x2F;&#x2F;experiments-helloworld-alb-1556701883.ap-south-1.elb.amazonaws.com&quot;&gt;http:&#x2F;&#x2F;experiments-helloworld-alb-1556701883.ap-south-1.elb.amazonaws.com&lt;&#x2F;a&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;To finish setting up our basic app, I&#x27;ll just provision a new certificate via Certificate Manager in order to use HTTPS. This would involve adding a new CNAME record. Next, I add a listener to the ALB, listening on 443 and forwarding to our target group. Once this is done, I&#x27;ll create a CNAME record for &lt;code&gt;hello.metamehta.in&lt;&#x2F;code&gt; pointing to the ALB.&lt;&#x2F;p&gt;
+&lt;p&gt;Cool, so we now have our flask application running at &lt;a href=&quot;https:&#x2F;&#x2F;hello.metamehta.in&quot;&gt;https:&#x2F;&#x2F;hello.metamehta.in&lt;&#x2F;a&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;Woohoo! So we&#x27;re done with one milestone! The next job is setting up LTTKGP, instead of our dummy application. We still need to configure a ton of stuff, security groups for example, since for now our default security group allows traffic on all ports which seems like a horrible thing to do&lt;&#x2F;p&gt;
+</content>
+        
+    </entry>
+    <entry xml:lang="en">
+        <title>Adding KGP Email to other mail clients</title>
+        <published>2021-03-25T00:00:00+00:00</published>
+        <updated>2021-03-25T00:00:00+00:00</updated>
+        
+        <author>
+          <name>
+            
+              Unknown
+            
+          </name>
+        </author>
+        
+        <link rel="alternate" type="text/html" href="https://mukul-mehta.in/til/kgpmail/"/>
+        <id>https://mukul-mehta.in/til/kgpmail/</id>
+        
+        <content type="html" xml:base="https://mukul-mehta.in/til/kgpmail/">&lt;p&gt;Not really a TIL but a talking to a friend made me realize that it might be better to write a short guide on adding KGP Email (@iitkgp.ac.in) to other mail clients that suck less than Zimbra (Pretty low bar, I know!)&lt;&#x2F;p&gt;
+&lt;h1 id=&quot;why&quot;&gt;Why?&lt;&#x2F;h1&gt;
+&lt;p&gt;All of us get a institute email ID that we can use to send&#x2F;receive official mail. The mail client we use by default is Zimbra, which looks pretty bad, does not have formatting options and has no way to organize mail&lt;&#x2F;p&gt;
+&lt;p&gt;The Computer &amp;amp; Informatics Centre website lists the SMTP and POP&#x2F;IMAP server for sending and receiving mail, which can be used to add KGP Email to other mail clients. The details can be found at &lt;a href=&quot;http:&#x2F;&#x2F;www.cic.iitkgp.ac.in&#x2F;?q=Mail&quot;&gt;http:&#x2F;&#x2F;www.cic.iitkgp.ac.in&#x2F;?q=Mail&lt;&#x2F;a&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;I&#x27;ve added my institute email ID to the Gmail client on my phone and Apple Mail on my laptop (Which I&#x27;ve recently started to use, and like). I&#x27;ve used Mailspring in the past and really like it&lt;&#x2F;p&gt;
+&lt;h3 id=&quot;on-the-gmail-client-on-android&quot;&gt;On the Gmail client on Android&lt;&#x2F;h3&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;Go to add a new account, and choose Other&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;img src=&quot;https:&#x2F;&#x2F;mukul-mehta.in&#x2F;til&#x2F;kgpmail&#x2F;android_step0.jpeg&quot; alt=&quot;Choose Other in Account Type&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
+&lt;&#x2F;li&gt;
+&lt;li&gt;
+&lt;p&gt;Add your email address and then choose manual setup&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;img src=&quot;https:&#x2F;&#x2F;mukul-mehta.in&#x2F;til&#x2F;kgpmail&#x2F;android_step1.jpeg&quot; alt=&quot;Add email ID and then manual setup&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
+&lt;&#x2F;li&gt;
+&lt;li&gt;
+&lt;p&gt;In incoming server settings, choose IMAP (Or POP3, I&#x27;m using IMAP because it&#x27;s a more modern protocol). Then add your password and the server will be &lt;code&gt;iitkgpmail.iitkgp.ac.in&lt;&#x2F;code&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;img src=&quot;https:&#x2F;&#x2F;mukul-mehta.in&#x2F;til&#x2F;kgpmail&#x2F;android_step2.jpeg&quot; alt=&quot;Add password and mail server&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
+&lt;&#x2F;li&gt;
+&lt;li&gt;
+&lt;p&gt;Similarly, for outgoing server, enter your password. The mail server would be &lt;code&gt;iitkgpmail.iitkgp.ac.in&lt;&#x2F;code&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;img src=&quot;https:&#x2F;&#x2F;mukul-mehta.in&#x2F;til&#x2F;kgpmail&#x2F;android_step3.jpeg&quot; alt=&quot;Add password and mail server&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
+&lt;&#x2F;li&gt;
+&lt;li&gt;
+&lt;p&gt;Change additional settings as needed, for sync frequency and notifications. Add the email ID and it should take a couple of minutes to sync old mails. Now you can receive and send emails using this account!&lt;&#x2F;p&gt;
+&lt;&#x2F;li&gt;
+&lt;&#x2F;ol&gt;
+&lt;h3 id=&quot;on-other-mobile-desktop-mail-clients&quot;&gt;On other mobile&#x2F;desktop mail clients&lt;&#x2F;h3&gt;
+&lt;p&gt;The process should be pretty similar -&amp;gt; Add a custom email, use the credentials that you would use on Zimbra and use &lt;code&gt;iitkgpmail.iitkgp.ac.in&lt;&#x2F;code&gt; as the mail server, for both incoming (IMAP&#x2F;POP3) connections and outgoing SMTP connections&lt;&#x2F;p&gt;
+&lt;h3 id=&quot;configuring-mutt&quot;&gt;Configuring Mutt&lt;&#x2F;h3&gt;
+&lt;p&gt;For some of us more cultured freaks out there, who prefer &lt;em&gt;minimal&lt;&#x2F;em&gt; TUI clients such as mutt, the configuration is pretty similar. Here&#x27;s my very basic &lt;code&gt;.muttrc&lt;&#x2F;code&gt; that I use with my institute email&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;ini&quot; style=&quot;background-color:#2b2c2f;color:#cccece;&quot; class=&quot;language-ini &quot;&gt;&lt;code class=&quot;language-ini&quot; data-lang=&quot;ini&quot;&gt;&lt;span style=&quot;color:#f99157;&quot;&gt;set &lt;&#x2F;span&gt;&lt;span&gt;ssl_force_tls &lt;&#x2F;span&gt;&lt;span style=&quot;color:#5fb3b3;&quot;&gt;= &lt;&#x2F;span&gt;&lt;span style=&quot;color:#f99157;&quot;&gt;yes
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#f99157;&quot;&gt;set &lt;&#x2F;span&gt;&lt;span&gt;abort_nosubject &lt;&#x2F;span&gt;&lt;span style=&quot;color:#5fb3b3;&quot;&gt;= &lt;&#x2F;span&gt;&lt;span style=&quot;color:#f99157;&quot;&gt;no
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#f99157;&quot;&gt;set &lt;&#x2F;span&gt;&lt;span&gt;sleep_time &lt;&#x2F;span&gt;&lt;span style=&quot;color:#5fb3b3;&quot;&gt;= &lt;&#x2F;span&gt;&lt;span style=&quot;color:#f99157;&quot;&gt;0
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#f99157;&quot;&gt;set &lt;&#x2F;span&gt;&lt;span&gt;mail_check &lt;&#x2F;span&gt;&lt;span style=&quot;color:#5fb3b3;&quot;&gt;= &lt;&#x2F;span&gt;&lt;span style=&quot;color:#f99157;&quot;&gt;60
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#f99157;&quot;&gt;set &lt;&#x2F;span&gt;&lt;span&gt;timeout &lt;&#x2F;span&gt;&lt;span style=&quot;color:#5fb3b3;&quot;&gt;= &lt;&#x2F;span&gt;&lt;span style=&quot;color:#f99157;&quot;&gt;10
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#f99157;&quot;&gt;set &lt;&#x2F;span&gt;&lt;span&gt;sort &lt;&#x2F;span&gt;&lt;span style=&quot;color:#5fb3b3;&quot;&gt;= &lt;&#x2F;span&gt;&lt;span style=&quot;color:#99c794;&quot;&gt;&amp;quot;reverse-date-received&amp;quot;
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#f99157;&quot;&gt;set &lt;&#x2F;span&gt;&lt;span&gt;copy &lt;&#x2F;span&gt;&lt;span style=&quot;color:#5fb3b3;&quot;&gt;= &lt;&#x2F;span&gt;&lt;span style=&quot;color:#f99157;&quot;&gt;no
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#f99157;&quot;&gt;set &lt;&#x2F;span&gt;&lt;span&gt;from &lt;&#x2F;span&gt;&lt;span style=&quot;color:#5fb3b3;&quot;&gt;= &lt;&#x2F;span&gt;&lt;span style=&quot;color:#99c794;&quot;&gt;&amp;quot;mukul_mehta@iitkgp.ac.in&amp;quot;
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#f99157;&quot;&gt;set &lt;&#x2F;span&gt;&lt;span&gt;realname &lt;&#x2F;span&gt;&lt;span style=&quot;color:#5fb3b3;&quot;&gt;= &lt;&#x2F;span&gt;&lt;span style=&quot;color:#99c794;&quot;&gt;&amp;quot;Mukul Mehta&amp;quot;
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#5f6364;&quot;&gt;# Imap settings
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#f99157;&quot;&gt;set &lt;&#x2F;span&gt;&lt;span&gt;imap_user &lt;&#x2F;span&gt;&lt;span style=&quot;color:#5fb3b3;&quot;&gt;= &lt;&#x2F;span&gt;&lt;span style=&quot;color:#99c794;&quot;&gt;&amp;quot;mukul_mehta@iitkgp.ac.in&amp;quot;
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#f99157;&quot;&gt;set &lt;&#x2F;span&gt;&lt;span&gt;imap_pass &lt;&#x2F;span&gt;&lt;span style=&quot;color:#5fb3b3;&quot;&gt;= &lt;&#x2F;span&gt;&lt;span style=&quot;color:#99c794;&quot;&gt;&amp;quot;HAHAHAHAHAHA&amp;quot;
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#5f6364;&quot;&gt;# Smtp settings
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#f99157;&quot;&gt;set &lt;&#x2F;span&gt;&lt;span&gt;smtp_url &lt;&#x2F;span&gt;&lt;span style=&quot;color:#5fb3b3;&quot;&gt;= &lt;&#x2F;span&gt;&lt;span style=&quot;color:#99c794;&quot;&gt;&amp;quot;smtps:&#x2F;&#x2F;mukul_mehta@iitkgpmail.iitkgp.ac.in&amp;quot;
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#f99157;&quot;&gt;set &lt;&#x2F;span&gt;&lt;span&gt;smtp_pass &lt;&#x2F;span&gt;&lt;span style=&quot;color:#5fb3b3;&quot;&gt;= &lt;&#x2F;span&gt;&lt;span style=&quot;color:#99c794;&quot;&gt;&amp;quot;HAHAHAHAHAHA&amp;quot;
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#5f6364;&quot;&gt;# Remote email folders
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#f99157;&quot;&gt;set &lt;&#x2F;span&gt;&lt;span&gt;folder &lt;&#x2F;span&gt;&lt;span style=&quot;color:#5fb3b3;&quot;&gt;= &lt;&#x2F;span&gt;&lt;span style=&quot;color:#99c794;&quot;&gt;&amp;quot;imaps:&#x2F;&#x2F;iitkgpmail.iitkgp.ac.in&#x2F;&amp;quot;
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#f99157;&quot;&gt;set &lt;&#x2F;span&gt;&lt;span&gt;spoolfile &lt;&#x2F;span&gt;&lt;span style=&quot;color:#5fb3b3;&quot;&gt;= &lt;&#x2F;span&gt;&lt;span style=&quot;color:#99c794;&quot;&gt;&amp;quot;+INBOX&amp;quot;
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#f99157;&quot;&gt;bind &lt;&#x2F;span&gt;&lt;span&gt;pager &lt;&#x2F;span&gt;&lt;span style=&quot;color:#5fb3b3;&quot;&gt;&amp;lt;&lt;&#x2F;span&gt;&lt;span&gt;up&lt;&#x2F;span&gt;&lt;span style=&quot;color:#5fb3b3;&quot;&gt;&amp;gt;&lt;&#x2F;span&gt;&lt;span&gt; previous&lt;&#x2F;span&gt;&lt;span style=&quot;color:#5fb3b3;&quot;&gt;-&lt;&#x2F;span&gt;&lt;span&gt;line
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#f99157;&quot;&gt;bind &lt;&#x2F;span&gt;&lt;span&gt;pager &lt;&#x2F;span&gt;&lt;span style=&quot;color:#5fb3b3;&quot;&gt;&amp;lt;&lt;&#x2F;span&gt;&lt;span&gt;down&lt;&#x2F;span&gt;&lt;span style=&quot;color:#5fb3b3;&quot;&gt;&amp;gt;&lt;&#x2F;span&gt;&lt;span&gt; next&lt;&#x2F;span&gt;&lt;span style=&quot;color:#5fb3b3;&quot;&gt;-&lt;&#x2F;span&gt;&lt;span&gt;line
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#f99157;&quot;&gt;set &lt;&#x2F;span&gt;&lt;span&gt;smart_wrap
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+</content>
+        
+    </entry>
+    <entry xml:lang="en">
+        <title>Linux&#x27;s Out-Of-Memory Killer</title>
+        <published>2021-01-08T00:00:00+00:00</published>
+        <updated>2021-01-08T00:00:00+00:00</updated>
+        
+        <author>
+          <name>
+            
+              Unknown
+            
+          </name>
+        </author>
+        
+        <link rel="alternate" type="text/html" href="https://mukul-mehta.in/til/oom/"/>
+        <id>https://mukul-mehta.in/til/oom/</id>
+        
+        <content type="html" xml:base="https://mukul-mehta.in/til/oom/">&lt;h1 id=&quot;linux-s-oom-killer&quot;&gt;Linux&#x27;s OOM Killer&lt;&#x2F;h1&gt;
+&lt;p&gt;On Linux, processes can request more memory than that is currently free in the system. This is to manage memory more efficiently since processes might not use all of their allocated memory immediately and without this overcommiting, memory will be wasted. But this comes with an issue, what if a processes hogs so much memory such that even a single new page can&#x27;t be allocated to another process. This is where the OOM-Killer kicks in. The OOM-Killer (The name&#x27;s pretty cool ain&#x27;t it?) kicks in and sacrifices one or more processes&lt;&#x2F;p&gt;
+&lt;p&gt;I was curious as to how the OOM-Killer knows which process to kill. It needs to make sure the least disruption is caused but free enough space for other processes. Turns out the kernel creates a score called the &lt;code&gt;oom_score&lt;&#x2F;code&gt; to decide which process to kill&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;when-is-the-oom-killer-called&quot;&gt;When is the OOM Killer called?&lt;&#x2F;h2&gt;
+&lt;p&gt;For any process to get memory, the kernel must allocate pages and then mark those pages for the created process. This is written in the file &lt;a href=&quot;https:&#x2F;&#x2F;github.com&#x2F;torvalds&#x2F;linux&#x2F;blob&#x2F;master&#x2F;mm&#x2F;page_alloc.c&quot;&gt;mm&#x2F;page_alloc.c&lt;&#x2F;a&gt;. When checking for free pages, it does a check to see if it is out of memory (&lt;a href=&quot;https:&#x2F;&#x2F;github.com&#x2F;torvalds&#x2F;linux&#x2F;blob&#x2F;71c061d2443814de15e177489d5cc00a4a253ef3&#x2F;mm&#x2F;page_alloc.c#L4107&quot;&gt;here&lt;&#x2F;a&gt;). If the check fails, it does some sanity checking and then falls back to the OOM Killer. Given below is roughly the call stack:&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;c&quot; style=&quot;background-color:#2b2c2f;color:#cccece;&quot; class=&quot;language-c &quot;&gt;&lt;code class=&quot;language-c&quot; data-lang=&quot;c&quot;&gt;&lt;span&gt;_alloc_pages &lt;&#x2F;span&gt;&lt;span style=&quot;color:#5fb3b3;&quot;&gt;-&amp;gt; &lt;&#x2F;span&gt;&lt;span style=&quot;color:#6699cc;&quot;&gt;out_of_memory&lt;&#x2F;span&gt;&lt;span style=&quot;color:#5fb3b3;&quot;&gt;() -&amp;gt; &lt;&#x2F;span&gt;&lt;span style=&quot;color:#6699cc;&quot;&gt;select_bad_process&lt;&#x2F;span&gt;&lt;span style=&quot;color:#5fb3b3;&quot;&gt;() -&amp;gt; &lt;&#x2F;span&gt;&lt;span style=&quot;color:#6699cc;&quot;&gt;badness&lt;&#x2F;span&gt;&lt;span style=&quot;color:#5fb3b3;&quot;&gt;()
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;The code for the OOM Killer lies in &lt;a href=&quot;https:&#x2F;&#x2F;github.com&#x2F;torvalds&#x2F;linux&#x2F;blob&#x2F;master&#x2F;mm&#x2F;oom_kill.c&quot;&gt;mm&#x2F;oom_kill.c&lt;&#x2F;a&gt;&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;deciding-which-process-to-kill&quot;&gt;Deciding which process to kill&lt;&#x2F;h2&gt;
+&lt;p&gt;The OOM Killer calculates a score called &lt;a href=&quot;https:&#x2F;&#x2F;github.com&#x2F;torvalds&#x2F;linux&#x2F;blob&#x2F;71c061d2443814de15e177489d5cc00a4a253ef3&#x2F;mm&#x2F;oom_kill.c#L194&quot;&gt;badness&lt;&#x2F;a&gt;. The comments for the function explain what it does:&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;markdown&quot; style=&quot;background-color:#2b2c2f;color:#cccece;&quot; class=&quot;language-markdown &quot;&gt;&lt;code class=&quot;language-markdown&quot; data-lang=&quot;markdown&quot;&gt;&lt;span&gt;&#x2F;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#5fb3b3;&quot;&gt;\*\*
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#5fb3b3;&quot;&gt;- &lt;&#x2F;span&gt;&lt;span&gt;oom_badness - heuristic function to determine which candidate task to kill
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#5fb3b3;&quot;&gt;-&lt;&#x2F;span&gt;&lt;span&gt; @p: task struct of which task we should calculate
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#5fb3b3;&quot;&gt;-&lt;&#x2F;span&gt;&lt;span&gt; @totalpages: total present RAM allowed for page allocation
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#5fb3b3;&quot;&gt;-
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#5fb3b3;&quot;&gt;-&lt;&#x2F;span&gt;&lt;span&gt; The heuristic for determining which task to kill is made to be as simple and
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#5fb3b3;&quot;&gt;-&lt;&#x2F;span&gt;&lt;span&gt; predictable as possible. The goal is to return the highest value for the
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#5fb3b3;&quot;&gt;-&lt;&#x2F;span&gt;&lt;span&gt; task consuming the most memory to avoid subsequent oom failures.
+&lt;&#x2F;span&gt;&lt;span&gt;  &lt;&#x2F;span&gt;&lt;span style=&quot;color:#5fb3b3;&quot;&gt;\*&lt;&#x2F;span&gt;&lt;span&gt;&#x2F;
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;pre data-lang=&quot;c&quot; style=&quot;background-color:#2b2c2f;color:#cccece;&quot; class=&quot;language-c &quot;&gt;&lt;code class=&quot;language-c&quot; data-lang=&quot;c&quot;&gt;&lt;span style=&quot;color:#c594c5;&quot;&gt;long &lt;&#x2F;span&gt;&lt;span style=&quot;color:#6699cc;&quot;&gt;oom_badness&lt;&#x2F;span&gt;&lt;span style=&quot;color:#5fb3b3;&quot;&gt;(&lt;&#x2F;span&gt;&lt;span style=&quot;color:#c594c5;&quot;&gt;struct&lt;&#x2F;span&gt;&lt;span&gt; task_struct &lt;&#x2F;span&gt;&lt;span style=&quot;color:#5fb3b3;&quot;&gt;*&lt;&#x2F;span&gt;&lt;span style=&quot;color:#f99157;&quot;&gt;p&lt;&#x2F;span&gt;&lt;span style=&quot;color:#5fb3b3;&quot;&gt;, &lt;&#x2F;span&gt;&lt;span style=&quot;color:#c594c5;&quot;&gt;unsigned long &lt;&#x2F;span&gt;&lt;span style=&quot;color:#f99157;&quot;&gt;totalpages&lt;&#x2F;span&gt;&lt;span style=&quot;color:#5fb3b3;&quot;&gt;)
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;When calculating the score:&lt;&#x2F;p&gt;
+&lt;ol&gt;
+&lt;li&gt;Total memory consumed by a process (Including all its threads) is calculated&lt;&#x2F;li&gt;
+&lt;li&gt;For processes that have been running for a long time, the badness score is decreased&lt;&#x2F;li&gt;
+&lt;li&gt;For process whose priority has been changed with &lt;code&gt;nice&lt;&#x2F;code&gt;, the badness is doubled since they are likely less important&lt;&#x2F;li&gt;
+&lt;&#x2F;ol&gt;
+&lt;p&gt;Hence the processes that are likely to be killed are: Newly started, non-root and consuming a lot of memory&lt;&#x2F;p&gt;
+&lt;p&gt;For each process, a special file is created in the procfs: &lt;code&gt;&#x2F;proc&#x2F;$PID&#x2F;oom_score&lt;&#x2F;code&gt;. This contains the score calculated by the above method. A higher score (badness) means that the process is likely to be killed. To adjust the score for special processes, another file is present: &lt;code&gt;&#x2F;proc&#x2F;$PID&#x2F;oom_adj&lt;&#x2F;code&gt;. This contains the adjustment factor. The adj factor ranges from -16 to 15. A value of -17 ( &lt;code&gt;OOM_DISABLE&lt;&#x2F;code&gt; is a macro set to this value) means the process can&#x27;t be OOM Killed. The lower the value, the lower the chance of the process being killed.&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;can-i-check-the-oom-score-for-a-process&quot;&gt;Can I check the OOM Score for a process?&lt;&#x2F;h2&gt;
+&lt;p&gt;Yes! For a process with given PID, &lt;code&gt;&#x2F;proc&#x2F;PID&#x2F;oom_score&lt;&#x2F;code&gt; gives the score. The adj is given in &lt;code&gt;&#x2F;proc&#x2F;PID&#x2F;oom_adj&lt;&#x2F;code&gt; and the adjusted score is present in &lt;code&gt;&#x2F;proc&#x2F;PID&#x2F;oom_adj_score&lt;&#x2F;code&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;I plan on running a small script to see how this number changes as a process consumes more and more memory. I tried with a simple C script:&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;c&quot; style=&quot;background-color:#2b2c2f;color:#cccece;&quot; class=&quot;language-c &quot;&gt;&lt;code class=&quot;language-c&quot; data-lang=&quot;c&quot;&gt;&lt;span style=&quot;color:#c594c5;&quot;&gt;#include &lt;&#x2F;span&gt;&lt;span style=&quot;color:#5fb3b3;&quot;&gt;&amp;lt;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#99c794;&quot;&gt;stdio.h&lt;&#x2F;span&gt;&lt;span style=&quot;color:#5fb3b3;&quot;&gt;&amp;gt;
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#c594c5;&quot;&gt;#include &lt;&#x2F;span&gt;&lt;span style=&quot;color:#5fb3b3;&quot;&gt;&amp;lt;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#99c794;&quot;&gt;stdlib.h&lt;&#x2F;span&gt;&lt;span style=&quot;color:#5fb3b3;&quot;&gt;&amp;gt;
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#c594c5;&quot;&gt;#include &lt;&#x2F;span&gt;&lt;span style=&quot;color:#5fb3b3;&quot;&gt;&amp;lt;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#99c794;&quot;&gt;unistd.h&lt;&#x2F;span&gt;&lt;span style=&quot;color:#5fb3b3;&quot;&gt;&amp;gt;
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#c594c5;&quot;&gt;int &lt;&#x2F;span&gt;&lt;span style=&quot;color:#6699cc;&quot;&gt;main&lt;&#x2F;span&gt;&lt;span style=&quot;color:#5fb3b3;&quot;&gt;() {
+&lt;&#x2F;span&gt;&lt;span&gt;  &lt;&#x2F;span&gt;&lt;span style=&quot;color:#c594c5;&quot;&gt;int&lt;&#x2F;span&gt;&lt;span&gt; pid &lt;&#x2F;span&gt;&lt;span style=&quot;color:#5fb3b3;&quot;&gt;= &lt;&#x2F;span&gt;&lt;span style=&quot;color:#6699cc;&quot;&gt;getpid&lt;&#x2F;span&gt;&lt;span style=&quot;color:#5fb3b3;&quot;&gt;(),&lt;&#x2F;span&gt;&lt;span&gt; size &lt;&#x2F;span&gt;&lt;span style=&quot;color:#5fb3b3;&quot;&gt;= &lt;&#x2F;span&gt;&lt;span style=&quot;color:#f99157;&quot;&gt;1000&lt;&#x2F;span&gt;&lt;span style=&quot;color:#5fb3b3;&quot;&gt;;
+&lt;&#x2F;span&gt;&lt;span&gt; 	&lt;&#x2F;span&gt;&lt;span style=&quot;color:#c594c5;&quot;&gt;long int&lt;&#x2F;span&gt;&lt;span&gt; total &lt;&#x2F;span&gt;&lt;span style=&quot;color:#5fb3b3;&quot;&gt;= &lt;&#x2F;span&gt;&lt;span style=&quot;color:#f99157;&quot;&gt;0&lt;&#x2F;span&gt;&lt;span style=&quot;color:#5fb3b3;&quot;&gt;;
+&lt;&#x2F;span&gt;&lt;span&gt;  &lt;&#x2F;span&gt;&lt;span style=&quot;color:#c594c5;&quot;&gt;while&lt;&#x2F;span&gt;&lt;span style=&quot;color:#5fb3b3;&quot;&gt;(&lt;&#x2F;span&gt;&lt;span style=&quot;color:#f99157;&quot;&gt;1&lt;&#x2F;span&gt;&lt;span style=&quot;color:#5fb3b3;&quot;&gt;) {
+&lt;&#x2F;span&gt;&lt;span&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#c594c5;&quot;&gt;int &lt;&#x2F;span&gt;&lt;span style=&quot;color:#5fb3b3;&quot;&gt;*&lt;&#x2F;span&gt;&lt;span&gt;temp &lt;&#x2F;span&gt;&lt;span style=&quot;color:#5fb3b3;&quot;&gt;= (&lt;&#x2F;span&gt;&lt;span style=&quot;color:#c594c5;&quot;&gt;int &lt;&#x2F;span&gt;&lt;span style=&quot;color:#5fb3b3;&quot;&gt;*)&lt;&#x2F;span&gt;&lt;span style=&quot;color:#6699cc;&quot;&gt;malloc&lt;&#x2F;span&gt;&lt;span style=&quot;color:#5fb3b3;&quot;&gt;(&lt;&#x2F;span&gt;&lt;span style=&quot;color:#6699cc;&quot;&gt;size &lt;&#x2F;span&gt;&lt;span style=&quot;color:#5fb3b3;&quot;&gt;* sizeof(&lt;&#x2F;span&gt;&lt;span style=&quot;color:#c594c5;&quot;&gt;int&lt;&#x2F;span&gt;&lt;span style=&quot;color:#5fb3b3;&quot;&gt;));
+&lt;&#x2F;span&gt;&lt;span&gt;    total &lt;&#x2F;span&gt;&lt;span style=&quot;color:#5fb3b3;&quot;&gt;+=&lt;&#x2F;span&gt;&lt;span&gt; size&lt;&#x2F;span&gt;&lt;span style=&quot;color:#5fb3b3;&quot;&gt;;
+&lt;&#x2F;span&gt;&lt;span&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#6699cc;&quot;&gt;printf&lt;&#x2F;span&gt;&lt;span style=&quot;color:#5fb3b3;&quot;&gt;(&amp;quot;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#99c794;&quot;&gt;PID: %d has malloced %ld memory&lt;&#x2F;span&gt;&lt;span style=&quot;color:#5fb3b3;&quot;&gt;\n&amp;quot;,&lt;&#x2F;span&gt;&lt;span style=&quot;color:#6699cc;&quot;&gt; pid&lt;&#x2F;span&gt;&lt;span style=&quot;color:#5fb3b3;&quot;&gt;,&lt;&#x2F;span&gt;&lt;span style=&quot;color:#6699cc;&quot;&gt; total&lt;&#x2F;span&gt;&lt;span style=&quot;color:#5fb3b3;&quot;&gt;);
+&lt;&#x2F;span&gt;&lt;span&gt;  	&lt;&#x2F;span&gt;&lt;span style=&quot;color:#6699cc;&quot;&gt;usleep&lt;&#x2F;span&gt;&lt;span style=&quot;color:#5fb3b3;&quot;&gt;(&lt;&#x2F;span&gt;&lt;span style=&quot;color:#f99157;&quot;&gt;750&lt;&#x2F;span&gt;&lt;span style=&quot;color:#5fb3b3;&quot;&gt;);
+&lt;&#x2F;span&gt;&lt;span&gt;  &lt;&#x2F;span&gt;&lt;span style=&quot;color:#5fb3b3;&quot;&gt;}
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#5fb3b3;&quot;&gt;}
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;The &lt;code&gt;oom_score&lt;&#x2F;code&gt; starts at 0 and increases till 300 before the OOM Killer decides to kill the process&lt;&#x2F;p&gt;
+&lt;p&gt;I&#x27;d love to hear comments and mistakes I made below, drop a comment!&lt;&#x2F;p&gt;
+&lt;h3 id=&quot;sources&quot;&gt;Sources:&lt;&#x2F;h3&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;a href=&quot;https:&#x2F;&#x2F;linux-mm.org&#x2F;OOM_Killer&quot;&gt;https:&#x2F;&#x2F;linux-mm.org&#x2F;OOM_Killer&lt;&#x2F;a&gt; - Great article. The website contains a lot of info about linux memory management&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;a href=&quot;https:&#x2F;&#x2F;unix.stackexchange.com&#x2F;questions&#x2F;153585&#x2F;how-does-the-oom-killer-decide-which-process-to-kill-first&quot;&gt;This StackOverflow answer&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;a href=&quot;https:&#x2F;&#x2F;lwn.net&#x2F;Articles&#x2F;317814&#x2F;&quot;&gt;This LWN article&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;
+&lt;&#x2F;ol&gt;
+</content>
+        
+    </entry>
+    <entry xml:lang="en">
+        <title>&#x2F;sbin&#x2F;init; Hello World!</title>
+        <published>2021-01-07T00:00:00+00:00</published>
+        <updated>2021-01-07T00:00:00+00:00</updated>
+        
+        <author>
+          <name>
+            
+              Unknown
+            
+          </name>
+        </author>
+        
+        <link rel="alternate" type="text/html" href="https://mukul-mehta.in/posts/hello-world/"/>
+        <id>https://mukul-mehta.in/posts/hello-world/</id>
+        
+        <content type="html" xml:base="https://mukul-mehta.in/posts/hello-world/">&lt;h2 id=&quot;hello-world&quot;&gt;Hello World!&lt;&#x2F;h2&gt;
+&lt;p&gt;After procrastinating on fixing my website for months, I&#x27;ve decided to go with &lt;a href=&quot;https:&#x2F;&#x2F;github.com&#x2F;janbaudisch&#x2F;zola-sam&quot;&gt;this theme&lt;&#x2F;a&gt; and the &lt;a href=&quot;https:&#x2F;&#x2F;www.getzola.org&#x2F;&quot;&gt;Zola&lt;&#x2F;a&gt; static site generator. I was using Hugo before and IMHO the layout and code organization was complex and not exactly easy to use and modify. I was looking for other options and a senior of mine, &lt;a href=&quot;https:&#x2F;&#x2F;www.xypnox.com&#x2F;blag&#x2F;&quot;&gt;Xypnox&lt;&#x2F;a&gt; migrated his amazing blag (Make sure to check it out!) to Zola. He had a pretty good experience with it and wrote a &lt;a href=&quot;https:&#x2F;&#x2F;www.xypnox.com&#x2F;blag&#x2F;posts&#x2F;migrating-to-zola&#x2F;&quot;&gt;post&lt;&#x2F;a&gt; outlining the process and his experience. I was impressed with how easy it was to get started and make changes to theme and decided to move to Zola&lt;&#x2F;p&gt;
+&lt;p&gt;I loved the Sam theme since it was very minimal and incredibly easy to customise. I made a couple of design changes to it thanks to a friend - &lt;a href=&quot;https:&#x2F;&#x2F;rashil2000.me&quot;&gt;Rashil&lt;&#x2F;a&gt; and got this new blog up and running!&lt;&#x2F;p&gt;
+&lt;p&gt;So yeah, after months of deciding what theme to go with, messing around with the little frontend knowledge I have and switching between the endless SSGs out there, here we are!&lt;&#x2F;p&gt;
+&lt;p&gt;I plan to blog about programming, software dev, open source and random 3 AM thoughts. Hopefully I&#x27;ll be regular in maintaining this blog!&lt;&#x2F;p&gt;
+&lt;p&gt;To reach out to me for suggestions, criticism and rants, reach out to me at any of the following links&lt;&#x2F;p&gt;
+&lt;div class=&quot;social-icons&quot;&gt;
+&lt;a class=&quot;social-icons__link&quot; href=&quot;mailto:mukul.csiitkgp@gmail.com&quot; rel=&quot;noopener&quot; target=&quot;_blank&quot;&gt;
+&lt;svg class=&quot;feather feather-mail&quot; fill=&quot;none&quot; height=&quot;24&quot; stroke-linecap=&quot;round&quot; stroke-linejoin=&quot;round&quot; stroke-width=&quot;2&quot; stroke=&quot;currentColor&quot; viewBox=&quot;0 0 24 24&quot; width=&quot;24&quot; xmlns=&quot;http:&#x2F;&#x2F;www.w3.org&#x2F;2000&#x2F;svg&quot;&gt;
+&lt;path d=&quot;M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z&quot;&gt;&lt;&#x2F;path&gt;
+&lt;polyline points=&quot;22,6 12,13 2,6&quot;&gt;&lt;&#x2F;polyline&gt;
+&lt;&#x2F;svg&gt;
+&lt;&#x2F;a&gt;
+&lt;a class=&quot;social-icons__link&quot; href=&quot;https:&#x2F;&#x2F;github.com&#x2F;mukul-mehta&quot; rel=&quot;noopener&quot; target=&quot;_blank&quot;&gt;
+    &lt;svg class=&quot;featherfeather-github&quot; fill=&quot;none&quot; height=&quot;24&quot; stroke-linecap=&quot;round&quot; stroke-linejoin=&quot;round&quot; stroke-width=&quot;2&quot; stroke=&quot;currentColor&quot; viewBox=&quot;002424&quot; width=&quot;24&quot; xmlns=&quot;http:&#x2F;&#x2F;www.w3.org&#x2F;2000&#x2F;svg&quot;&gt;
+        &lt;path d=&quot;M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7
+            0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22&quot;&gt;&lt;&#x2F;path&gt;
+    &lt;&#x2F;svg&gt;
+&lt;&#x2F;a&gt;
+&lt;a class=&quot;social-icons__link&quot; href=&quot;https:&#x2F;&#x2F;twitter.com&#x2F;mukulmehta_&quot; rel=&quot;noopener&quot; target=&quot;_blank&quot;&gt;
+    &lt;svg class=&quot;feather feather-twitter&quot; fill=&quot;none&quot; height=&quot;24&quot; stroke-linecap=&quot;round&quot; stroke-linejoin=&quot;round&quot; stroke-width=&quot;2&quot; stroke=&quot;currentColor&quot; viewBox=&quot;0 0 24 24&quot; width=&quot;24&quot; xmlns=&quot;http:&#x2F;&#x2F;www.w3.org&#x2F;2000&#x2F;svg&quot;&gt;
+        &lt;path d=&quot;M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z&quot;&gt;&lt;&#x2F;path&gt;
+    &lt;&#x2F;svg&gt;
+&lt;&#x2F;a&gt;
+&lt;a class=&quot;social-icons__link&quot; href=&quot;https:&#x2F;&#x2F;facebook.com&#x2F;mukul.amehta&quot; rel=&quot;noopener&quot; target=&quot;_blank&quot;&gt;
+    &lt;svg class=&quot;feather feather-facebook&quot; fill=&quot;none&quot; height=&quot;24&quot; stroke-linecap=&quot;round&quot; stroke-linejoin=&quot;round&quot; stroke-width=&quot;2&quot; stroke=&quot;currentColor&quot; viewBox=&quot;0 0 24 24&quot; width=&quot;24&quot; xmlns=&quot;http:&#x2F;&#x2F;www.w3.org&#x2F;2000&#x2F;svg&quot;&gt;
+        &lt;path d=&quot;M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z&quot;&gt;&lt;&#x2F;path&gt;
+    &lt;&#x2F;svg&gt;
+&lt;&#x2F;a&gt;
+&lt;&#x2F;div&gt;
+&lt;p&gt;Till next time, here&#x27;s an amazing song for you to enjoy&lt;&#x2F;p&gt;
+&lt;div&gt;
+    &lt;iframe allow=&quot;encrypted-media&quot; allowtransparency=&quot;true&quot; frameborder=&quot;0&quot; height=&quot;380&quot; src=&quot;https:&#x2F;&#x2F;open.spotify.com&#x2F;embed&#x2F;track&#x2F;780zqvhD7SvK0sMGheplPf&quot; width=&quot;300&quot;&gt;&lt;&#x2F;iframe&gt;
+&lt;&#x2F;div&gt;</content>
+        
+    </entry>
+    <entry xml:lang="en">
+        <title>Why TIL Posts</title>
+        <published>2021-01-07T00:00:00+00:00</published>
+        <updated>2021-01-07T00:00:00+00:00</updated>
+        
+        <author>
+          <name>
+            
+              Unknown
+            
+          </name>
+        </author>
+        
+        <link rel="alternate" type="text/html" href="https://mukul-mehta.in/til/hello/"/>
+        <id>https://mukul-mehta.in/til/hello/</id>
+        
+        <content type="html" xml:base="https://mukul-mehta.in/til/hello/">&lt;h1 id=&quot;yo&quot;&gt;Yo!&lt;&#x2F;h1&gt;
+&lt;p&gt;For any bug out there, Stack Overflow and random blogposts from 2012 are our best friends. Since a lot of it gets lost, I&#x27;m planning to post little bits of information I learnt from StackOverflow, blogs and random exploration. This section was inspired by a senior of mine, Sangeet Mishra started it on his &lt;a href=&quot;https:&#x2F;&#x2F;sangeetmishra.in&#x2F;til&#x2F;&quot;&gt;blog&lt;&#x2F;a&gt; and I loved the idea!&lt;&#x2F;p&gt;
+</content>
+        
+    </entry>
+</feed>

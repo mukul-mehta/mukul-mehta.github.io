@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta content="chrome=1" http-equiv="X-UA-Compatible" />
+    <meta content="True" name="HandheldFriendly" />
+    <meta content="320" name="MobileOptimized" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <meta content="no-referrer" name="referrer" />
+    
+    <link href="&#x2F;favicons&#x2F;site.webmanifest" rel="manifest" />
+     
+    <link
+      color="#5bbad5"
+      href="&#x2F;favicons&#x2F;safari-pinned-tab.svg"
+      rel="mask-icon"
+    />
+     
+    <link
+      href="&#x2F;favicons&#x2F;favicon-16x16.png"
+      rel="icon"
+      sizes="16x16"
+      type="image/png"
+    />
+     
+    <link
+      href="&#x2F;favicons&#x2F;favicon-32x32.png"
+      rel="icon"
+      sizes="32x32"
+      type="image/png"
+    />
+     
+    <link
+      href="&#x2F;favicons&#x2F;apple-touch-icon.png"
+      rel="apple-touch-icon"
+      sizes="180x180"
+    />
+    
+    <link href="https://mukul-mehta.in/fonts.css" rel="stylesheet" />
+    <link href="https://mukul-mehta.in/style.css" rel="stylesheet" />
+    <title>
+      
+    Messing around with AWS for LTTKGP!
+
+    </title>
+    
+    <script async defer data-website-id="00b415fd-978e-4bcb-a280-90039a67a557" src="https://umami.mukul-mehta.in/umami.js"></script>
+  </head>
+  <body>
+    
+<div class="wrap">
+  <script>
+    (function initTheme() {
+      let body = document.getElementsByTagName("body")[0];
+      if (window.localStorage.getItem("theme") !== null) {
+        if (window.localStorage.getItem("theme") === "dark") {
+          body.setAttribute("data-theme", "dark");
+        } else {
+          body.setAttribute("data-theme", "light");
+        }
+      } else {
+        if (
+          window.matchMedia &&
+          window.matchMedia("(prefers-color-scheme: dark)").matches
+        ) {
+          body.setAttribute("data-theme", "dark");
+        }
+      }
+    })();
+  </script>
+  <div class="section">
+    <div class="theme-switcher">
+    <div class="theme-button" onClick="toggleTheme()">
+        <label for="cb1">
+            <svg
+                id="dayIcon"
+                style="enable-background:new 0 0 35 35;"
+                version="1.1"
+                viewBox="0 0 35 35"
+                x="0px"
+                xml:space="preserve"
+                xmlns:xlink="http://www.w3.org/1999/xlink"
+                xmlns="http://www.w3.org/2000/svg"
+                y="0px">
+                <g id="Sun">
+                    <g>
+                        <path
+                            d="M6,17.5C6,16.672,5.328,16,4.5,16h-3C0.672,16,0,16.672,0,17.5 S0.672,19,1.5,19h3C5.328,19,6,18.328,6,17.5z
+                                M7.5,26c-0.414,0-0.789,0.168-1.061,0.439l-2,2C4.168,28.711,4,29.086,4,29.5
+                                C4,30.328,4.671,31,5.5,31c0.414,0,0.789-0.168,1.06-0.44l2-2C8.832,28.289,9,27.914,9,27.5C9,26.672,8.329,26,7.5,26z M17.5,6
+                                C18.329,6,19,5.328,19,4.5v-3C19,0.672,18.329,0,17.5,0S16,0.672,16,1.5v3C16,5.328,16.671,6,17.5,6z M27.5,9
+                                c0.414,0,0.789-0.168,1.06-0.439l2-2C30.832,6.289,31,5.914,31,5.5C31,4.672,30.329,4,29.5,4c-0.414,0-0.789,0.168-1.061,0.44
+                                l-2,2C26.168,6.711,26,7.086,26,7.5C26,8.328,26.671,9,27.5,9z M6.439,8.561C6.711,8.832,7.086,9,7.5,9C8.328,9,9,8.328,9,7.5
+                                c0-0.414-0.168-0.789-0.439-1.061l-2-2C6.289,4.168,5.914,4,5.5,4C4.672,4,4,4.672,4,5.5c0,0.414,0.168,0.789,0.439,1.06 L6.439,8.561z
+                                M33.5,16h-3c-0.828,0-1.5,0.672-1.5,1.5s0.672,1.5,1.5,1.5h3c0.828,0,1.5-0.672,1.5-1.5S34.328,16,33.5,16z
+                                M28.561,26.439C28.289,26.168,27.914,26,27.5,26c-0.828,0-1.5,0.672-1.5,1.5c0,0.414,0.168,0.789,0.439,1.06l2,2
+                                C28.711,30.832,29.086,31,29.5,31c0.828,0,1.5-0.672,1.5-1.5c0-0.414-0.168-0.789-0.439-1.061L28.561,26.439z M17.5,29
+                                c-0.829,0-1.5,0.672-1.5,1.5v3c0,0.828,0.671,1.5,1.5,1.5s1.5-0.672,1.5-1.5v-3C19,29.672,18.329,29,17.5,29z M17.5,7
+                                C11.71,7,7,11.71,7,17.5S11.71,28,17.5,28S28,23.29,28,17.5S23.29,7,17.5,7z M17.5,25c-4.136,0-7.5-3.364-7.5-7.5
+                                c0-4.136,3.364-7.5,7.5-7.5c4.136,0,7.5,3.364,7.5,7.5C25,21.636,21.636,25,17.5,25z"
+                            style="fill-rule:evenodd;clip-rule:evenodd;"/>
+                    </g>
+                </g>
+            </svg>
+        </label>
+        <input class="toggle" id="cb1" onClick="toggleTheme()" type="checkbox"/>
+        <label class="toggle-button" for="cb1"></label>
+        <label for="cb1">
+            <svg
+                enable-background="new 0 0 100 100"
+                id="nightIcon"
+                version="1.1"
+                viewBox="0 0 100 100"
+                x="0px"
+                xml:space="preserve"
+                xmlns:xlink="http://www.w3.org/1999/xlink"
+                xmlns="http://www.w3.org/2000/svg"
+                y="0px">
+                <path d="M96.76,66.458c-0.853-0.852-2.15-1.064-3.23-0.534c-6.063,2.991-12.858,4.571-19.655,4.571
+                C62.022,70.495,50.88,65.88,42.5,57.5C29.043,44.043,25.658,23.536,34.076,6.47c0.532-1.08,0.318-2.379-0.534-3.23
+                c-0.851-0.852-2.15-1.064-3.23-0.534c-4.918,2.427-9.375,5.619-13.246,9.491c-9.447,9.447-14.65,22.008-14.65,35.369
+                c0,13.36,5.203,25.921,14.65,35.368s22.008,14.65,35.368,14.65c13.361,0,25.921-5.203,35.369-14.65 c3.872-3.871,7.064-8.328,9.491-13.246C97.826,68.608,97.611,67.309,96.76,66.458z"/>
+            </svg>
+        </label>
+    </div>
+</div>
+  </div>
+  <div class="section" id="title">
+    Messing around with AWS for LTTKGP!
+</div>
+  <div class="section" id="content">
+    
+    
+        <div class="byline">
+            
+                
+    
+    Tuesday 20 Apr, 2021
+
+            
+            
+                
+                    &#183; 2001 words
+                
+            
+            
+                
+                
+                    &#183; 11 min
+                
+            
+        </div>
+        
+            <div class="tag-container">
+                
+                    <span class="tag">
+                        <a href="https://mukul-mehta.in/tags/lttkgp/">
+                            LTTKGP
+                        </a>
+                    </span>
+                
+                    <span class="tag">
+                        <a href="https://mukul-mehta.in/tags/aws/">
+                            AWS
+                        </a>
+                    </span>
+                
+            </div>
+        
+        <hr/>
+    <p>After hours of minimal success at trying to setup LTTKGP on AWS, I've decided to start over from scratch, with a tiny app and blog my experiments.</p>
+<p><strong>Warning:</strong> This is my first time using AWS beyond just plain old EC2 and S3 and I apologise for any mistakes. Also, this might get really long. you've been warned :)</p>
+<h1 id="prelude">Prelude</h1>
+<p>Last summer, I started working on <a href="https://lttkgp.com">LTTKGP</a> with a bunch of awesome people. LTTKGP fetches songs posted on the FB Group <a href="https://www.facebook.com/groups/lttkgp">Listen To This KGP</a>, collects metadata, organizes them into feeds, and has a pretty cool webplayer that lets user play these collections. The project is open source and code can be found on the <a href="https://github.com/lttkgp">GitHub org</a>.</p>
+<p>LTTKGP has a couple of components, and we use AWS to deploy 2 major services</p>
+<ul>
+<li><strong>R2-D2</strong>: This is the “Facebook connector” that polls the Facebook group at a pre-defined interval and persists the Graph API response in a No-SQL database. This data is then sent one at a time to C-3PO. The NoSQL database of choice is Amazon AWS’s DynamoDB</li>
+<li><strong>C-3PO</strong>: The central API server powering the website. C-3PO builds on top of the above projects by listening to new posts coming in from R2-D2, fetching metadata, and storing in a relational database. The website essentially make calls to C-3PO to fetch data and then C-3PO checks its databases, filters and returns songs in a specific format. The database of choice is PostgresQL on AWS RDS</li>
+</ul>
+<p>The other major service is Falcon, the beautiful UI that brings it all together. Falcon is deployed on Netlify and we use Cloudflare to manage DNS for the entire project</p>
+<h1 id="existing-aws-infrastructure">Existing AWS Infrastructure</h1>
+<p>To deploy LTTKGP, <a href="https://github.com/ghostwriternr">Naresh</a> came up with a pretty cool architecture (and daunting looking :P) which we've been using to deploy, for a couple of months now</p>
+<p><img src="https://mukul-mehta.in/posts/aws-experiments/LTTKGP-ExistingArch.jpeg" alt="The present architecture" /></p>
+<p>A top level overview is as follows:</p>
+<ul>
+<li>All resources lie inside our VPC, which is the big container.</li>
+<li>There are 2 databases -&gt; DynamoDB, a NoSQL database that stores raw FB posts when R2-D2 fetches them and a Postgres RDS instance to store posts after C-3PO processes them.</li>
+<li>We upload docker images for both C-3PO and R2-D2 to ECR and create task definitions using those images. Task definitions are essentially recipes for the actual services that will run those containers.</li>
+<li>Both C-3PO and R2-D2 have their private and public subnets. The ECS services run inside the private subnets. Security groups control which ports are exposed in each of the subnets, and ensure that private subnets can be accessed only by resources inside of the VPC (and have proper access)</li>
+<li>The Application Load Balancers (ALBs) redirect traffic from the outisde world to C-3PO and R2-D2. We need a NAT Gateway since both services are inside their private subnets and can't access/be accessed on the internet. This also means that routing tables and target groups have to be configured, using the EC2 dashboard</li>
+</ul>
+<p>(When this was set up, all I did was stare at the screen in constant awe!)</p>
+<p>The major issue with the present infra is that it's pretty expensive mainly because of the NAT Gateway and using Fargate to manage instances, instead of self managing EC2 instances.</p>
+<h1 id="mirroring-existing-infra">Mirroring Existing Infra</h1>
+<p>Since we could make do without private subnets, by having tighter rules in our security groups, I attempted to replicate the present infra on my personal AWS account and mess around with it till I can get it working again.</p>
+<p>The first thing I did was exactly replicate the infra we were using. It took me a couple hours but I set it up and can be accessed at:</p>
+<ul>
+<li><strong>C-3PO</strong>: https://api.metamehta.in/</li>
+<li><strong>R2-D2:</strong> https://data.metamehta.in/</li>
+<li><strong>Falcon:</strong> https://musik.metamehta.in/</li>
+</ul>
+<h1 id="experiments">Experiments!</h1>
+<p>I found a couple of cool Medium blogs (<a href="https://medium.com/swlh/how-to-deploy-an-application-to-aws-using-docker-ecs-and-ecr-aa7785fc9667">One</a>, <a href="https://medium.com/swlh/deploying-a-dockerised-web-app-using-aws-elastic-container-service-ecs-8373ec9681d2">Two</a>) that descibe how to deploy to ECS using self-hosted EC2 instances but I wasn't able to get C-3PO up and running. I've now decided to start from scratch, with a simple Flask app</p>
+<h2 id="starting-from-scratch-part-1">Starting from Scratch - Part 1</h2>
+<p>The first step is creating a new VPC for our use.</p>
+<p><img src="https://mukul-mehta.in/posts/aws-experiments/VPC-new.png" alt="The new VPC" /></p>
+<p>I'll create 2 new subnets inside the VPC. To use a elastic load balancer, we'll need atleast 2 subnets in different availability zones:</p>
+<ul>
+<li>helloworld-public-1: CIDR 10.0.2.0/24 in ap-south-1a</li>
+<li>Helloworld-public-2: CIDR 10.0.4.0/24 in ap-south-1b</li>
+</ul>
+<p>I also create a route table, with both of these subnets and a internet gateway that is attached to our VPC. Next, I'll setup a new flask application, dockerize it and create an ECS cluster.</p>
+<p><strong>NOTE:</strong> In your routing table, add a route from 0.0.0.0/0 to the above configured internet gateway. I didn't and it took me some time to figure it out</p>
+<h2 id="creating-our-test-flask-app">Creating our test Flask app</h2>
+<p>To begin, I'll use a simple hello world app. I'll keep iterating if I'm able to successfully deploy this first</p>
+<p>Here's the repository: https://github.com/mukul-mehta/Flask-ECS-Adventures</p>
+<h3 id="step-1-pushing-the-image-to-ecr">Step 1: Pushing the image to ECR</h3>
+<p>I've created a new private repository on AWS ECR called <code>flask-ecs</code>, to which I'll push my image. Once I'm done logging in, I build, tag and then push the image to the repository</p>
+<p><img src="https://mukul-mehta.in/posts/aws-experiments/ECR.jpg" alt="Pushing image to ECR" /></p>
+<h3 id="step-2-create-an-empty-ecs-cluster">Step 2: Create an empty ECS cluster</h3>
+<p>This should be simple hopefully. Go to ECS, create a new cluster and select template as EC2 Linux + Networking, give it a name and choose empty cluster on the next page</p>
+<h3 id="step-3-create-a-launch-template-for-ec2-instances">Step 3: Create a launch template for EC2 instances</h3>
+<p>This is where it started to get tricky for me. Do I need to setup a launch template and a autoscaling group, or can I do with just creating an instance for now :confused:</p>
+<p>Let's try creating a launch template for now.</p>
+<p>Since we need an instance for ECS, we'll choose a community AMI that it optimized for ECS. The latest one can be found <a href="https://ap-south-1.console.aws.amazon.com/systems-manager/parameters/aws/service/ecs/optimized-ami/amazon-linux-2/recommended/image_id/description?region=ap-south-1#">here</a>. The AMI comes with a 30GB root volume by default, and I don't think I'll add more storage for now. I don't specify an instance type in the launch template either. To add this instance to our ECS cluster, I add the following in user data (Advanced -&gt; User data)</p>
+<pre data-lang="bash" style="background-color:#2b2c2f;color:#cccece;" class="language-bash "><code class="language-bash" data-lang="bash"><span style="color:#5f6364;">#!/bin/bash
+</span><span style="color:#6699cc;">echo ECS_CLUSTER=your_cluster_name </span><span style="color:#5fb3b3;">&gt;&gt;</span><span style="color:#6699cc;"> /etc/ecs/ecs.config
+</span></code></pre>
+<p>I'll create just one instance for now. a t2.micro using the above launch template. I select the subnet as <code>helloworld-public-1</code> and use the default security group for now. I also need to create a new IAM Role for the instance, as mentioned in <a href="https://docs.aws.amazon.com/AmazonECS/latest/developerguide/launch_container_instance.html">this guide</a>. The new IAM role has the follwing permissions:</p>
+<p><img src="https://mukul-mehta.in/posts/aws-experiments/IAM.jpg" alt="IAM Role for ECS" /></p>
+<p>Now, we have a t2.micro EC2 instance, running an Amazon Linux AMI that is optimized for ECS, with our custom IAM role and user data. We should now this instance attached to our ECS cluster :crossed_fingers:</p>
+<p>IT DIDN'T WORK :neutral_face:</p>
+<p>Okay, gotta do this all over again. I need to create an EC2 instance and make sure that it's attached to the ECS cluster. Why is this so hard :disappointed:</p>
+<p>AWS's documentation says that the correct IAM role to use is called <code>ecsInstanceRole</code>. There isn't a profile with that name on my dashboard, let me create one using the instructions mentioned <a href="https://docs.aws.amazon.com/AmazonECS/latest/developerguide/instance_IAM_role.html">here</a>.</p>
+<p>Okay, this was my fault. Turns out I forgot to add a route in my routing table for this VPC. In order to use ECS, the instances need to have a route to reach the ECS service endpoints. For this, I need to add a route in my routing table, that routes to my internet gateway. Doing this fixed the problem and I can now see the EC2 instance in my ECS cluster</p>
+<p><img src="https://mukul-mehta.in/posts/aws-experiments/RouteTable.jpg" alt="This is how the routing table should look" /></p>
+<h3 id="step-4-create-a-new-service-in-the-ecs-cluster">Step 4: Create a new service in the ECS cluster</h3>
+<h4 id="4-1-create-a-new-task-definition">4.1: Create a new task definition</h4>
+<p>Before this, I need to setup a task definition. The task definition is a recipe for the service and specifies the image and hardware requirements for the task.</p>
+<p>In the task definition, I specify the URI of the container image (Which I pushed to ECR), a memory limit of 512MB and 512 CPU Units (Each CPU core is 1024 CPU units). I also need to add a port mapping, from 8000 in host to 8000 in the container, since my flask app is listening on port 8000 inside the container.</p>
+<p>Once we're done with creating with task definition, I need to create a service using this task definition</p>
+<h4 id="4-2-create-a-new-load-balancer">4.2: Create a new load balancer</h4>
+<p>Before I can create a new service, I need to setup an Application Load Balancer and a Target Group. For now, I'll setup a listener on port 80 instead of configuring a new certificate and setting up a HTTPS listener.</p>
+<p>Setting up the ALB should be fairly straightforward. Add a listener on port 80, for HTTP traffic, select the right VPC and subnets and the default security group. Then, setup a new target group that is listening on port 80 and protocol set to HTTP1. On our simple flask app, I setup a health check endpoint <code>/health</code> that on success returns a status code of 200. We need a health check endpoint since the target group needs to know when a target is down. It sends requests to this health check endpoint every couple (5 AFAIK) minutes and if there are 2 consecutive failures (status code != 200), it marks a target as unhealthy. I don't register any targets right now, since we'll do that when we setup our service</p>
+<p>Now that the ALB is setup, I'll go back to creating a new service</p>
+<h4 id="4-3-creating-a-service">4.3: Creating a service</h4>
+<p>Since we're using self-managed EC2 instances, the type of service is EC2. I set the number of tasks to 1. Next, we add the above configured ALB to our service and add the container as a target. For now, I use a very simple autoscaling policy, with minimum tasks set to 1, desired tasks set to 1 and maximum number of tasks as 2, which runs when average CPU utilization for our task crosses 65% I'm sure this won't trigger given our very simple app but nevertheless, we're done!</p>
+<h3 id="step-5-yaaaay-we-have-a-basic-app-up-and-running">Step 5: Yaaaay, we have a basic app up and running!</h3>
+<p>Now that we have our service created, it should've started a task (Which is a running instance of that service). I see a running task :)</p>
+<p><img src="https://mukul-mehta.in/posts/aws-experiments/cluster.jpg" alt="ECS Clusters Dashboard" /></p>
+<p>(As expected, CPU utilization is extremely low)</p>
+<p>Since our ALB is internet facing, we should be able to access it directly and it should work and it does! Here's the link: <a href="http://experiments-helloworld-alb-1556701883.ap-south-1.elb.amazonaws.com">http://experiments-helloworld-alb-1556701883.ap-south-1.elb.amazonaws.com</a></p>
+<p>To finish setting up our basic app, I'll just provision a new certificate via Certificate Manager in order to use HTTPS. This would involve adding a new CNAME record. Next, I add a listener to the ALB, listening on 443 and forwarding to our target group. Once this is done, I'll create a CNAME record for <code>hello.metamehta.in</code> pointing to the ALB.</p>
+<p>Cool, so we now have our flask application running at <a href="https://hello.metamehta.in">https://hello.metamehta.in</a></p>
+<p>Woohoo! So we're done with one milestone! The next job is setting up LTTKGP, instead of our dummy application. We still need to configure a ton of stuff, security groups for example, since for now our default security group allows traffic on all ports which seems like a horrible thing to do</p>
+
+    
+        
+            <h1>Comments</h1>
+            <script src="https://utteranc.es/client.js"
+                    repo="mukul-mehta/mukul-mehta.github.io"
+                    issue-term="pathname"
+                    label="comment"
+                    theme="preferred-color-scheme"
+                    crossorigin="anonymous"
+                    async>
+            </script>
+        
+    
+
+  </div>
+  <script
+    src="https://mukul-mehta.in/main.js"
+    type="text/javascript">
+  </script>
+  
+    <div class="section bottom-menu">
+        <hr/>
+        <p>
+            
+                
+                    <a href="&#x2F;about">about</a>
+                    &#183;
+                
+                    <a href="&#x2F;posts">posts</a>
+                    &#183;
+                
+                    <a href="&#x2F;til">t.i.l.</a>
+                    &#183;
+                
+                    <a href="&#x2F;Mukul_Mehta-Resume.pdf">resume</a>
+                    &#183;
+                
+            
+            <a href="https:&#x2F;&#x2F;mukul-mehta.in">
+                home
+            </a>
+            &#183;
+            <a href="https:&#x2F;&#x2F;github.com&#x2F;mukul-mehta">
+                github
+            </a>
+            &#183;
+            <a href="https:&#x2F;&#x2F;twitter.com&#x2F;mukulmehta_">
+                twitter
+            </a>
+            &#183;
+            <a href="https:&#x2F;&#x2F;mukul-mehta.in&#x2F;atom.xml">
+                rss
+            </a>
+        </p>
+    </div>
+
+  <script async defer data-website-id="00b415fd-978e-4bcb-a280-90039a67a557" src="https://umami.mukul-mehta.in/umami.js"></script>
+</div>
+
+    <script
+      type="text/javascript"
+      crossorigin="anonymous"
+      integrity="sha256-NkH6G4XRcQ5Bsfs7O6yh9mw1SJLEOJWCtWqko6VjF34="
+      src="https://cdn.jsdelivr.net/npm/chart.xkcd@1.1/dist/chart.xkcd.min.js"
+    ></script>
+    <script async defer data-website-id="00b415fd-978e-4bcb-a280-90039a67a557" src="https://umami.mukul-mehta.in/umami.js"></script>
+  </body>
+</html>
