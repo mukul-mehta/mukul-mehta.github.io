@@ -1,7 +1,7 @@
 # The URL the site will be built for
 base_url = "https://mukul-mehta.in"
 title = "Mukul Mehta"
-lang = "en"
+default_language = "en"
 
 # Whether to automatically compile all Sass files in the sass directory
 compile_sass = true
@@ -13,12 +13,11 @@ theme = "sam"
 # Whether to build a search index to be used later on by a JavaScript library
 build_search_index = false
 
-check_external_links = "true"
 
 taxonomies = [
     {name = "tags", rss = true}
 ]
-generate_feed = true
+generate_feeds = true
 
 [markdown]
 highlight_code = true
