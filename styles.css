@@ -1,0 +1,112 @@
+:root {
+  color-scheme: light;
+  --bg: #c3ddc2;
+  --bg-edge: #a4c5a7;
+  --bg-highlight: #deecd8;
+  --text: #1f3022;
+  --muted: rgba(31, 48, 34, 0.84);
+  --line: rgba(31, 48, 34, 0.38);
+  --image-shadow: rgba(43, 76, 48, 0.18);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  min-height: 100%;
+}
+
+body {
+  min-height: 100vh;
+  background:
+    radial-gradient(circle at 50% 38%, var(--bg-highlight) 0%, rgba(222, 236, 216, 0.88) 22%, rgba(222, 236, 216, 0) 48%),
+    radial-gradient(circle at top left, rgba(246, 250, 241, 0.45), transparent 24%),
+    radial-gradient(circle at bottom right, rgba(145, 184, 150, 0.52), transparent 30%),
+    linear-gradient(180deg, var(--bg) 0%, var(--bg-edge) 100%);
+  color: var(--text);
+  font-family: "Fraunces", Georgia, "Times New Roman", serif;
+}
+
+.page {
+  min-height: 100vh;
+  width: min(760px, calc(100% - 40px));
+  margin: 0 auto;
+  padding: 40px 0 56px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.page__image-wrap {
+  margin: 0;
+  width: 100%;
+}
+
+.page__image {
+  display: block;
+  width: min(100%, 500px);
+  margin: 0 auto 28px;
+  box-shadow: 0 18px 40px var(--image-shadow);
+}
+
+.page__title {
+  margin: 0;
+  font-size: clamp(2.15rem, 5.4vw, 3.45rem);
+  font-weight: 700;
+  line-height: 1.02;
+  letter-spacing: -0.05em;
+}
+
+.page__quote {
+  margin: 14px 0 0;
+  max-width: none;
+  color: var(--muted);
+  font-size: clamp(1rem, 2vw, 1.18rem);
+  line-height: 1.45;
+  white-space: nowrap;
+  font-weight: 500;
+}
+
+.page__links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+  margin-top: 24px;
+}
+
+.page__links a {
+  color: var(--text);
+  text-decoration: none;
+  font-family: "Space Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: 0.95rem;
+  border-bottom: 1px solid var(--line);
+  padding-bottom: 2px;
+  letter-spacing: 0.01em;
+  transition: border-color 140ms ease, opacity 140ms ease;
+}
+
+.page__links a:hover {
+  border-bottom-color: var(--text);
+  opacity: 0.78;
+}
+
+@media (max-width: 560px) {
+  .page {
+    width: calc(100% - 32px);
+    padding: 32px 0 48px;
+  }
+
+  .page__image {
+    margin-bottom: 24px;
+  }
+
+  .page__quote {
+    white-space: normal;
+  }
+}
