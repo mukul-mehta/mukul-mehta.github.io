@@ -1,6 +1,17 @@
 # mukul-mehta.github.io
-Personal Website hosted at https://mukul-mehta.in <br/>
-Powered by [Zola](https://www.getzola.org/) and the [Sam theme](https://github.com/janbaudisch/zola-sam) <br />
-<br />
-Deployment is via GitHub pages. Auto build is setup via a GitHub action <br /><br />
-![Deployment](https://github.com/mukul-mehta/mukul-mehta.github.io/workflows/Deployment/badge.svg)
+
+Temporary static personal homepage hosted at https://mukul-mehta.in.
+
+## Local preview
+
+Run this from the repo root:
+
+```bash
+python3 -m http.server 8000 --directory site
+```
+
+Then open `http://localhost:8000`.
+
+## Deploy
+
+GitHub Actions deploys the contents of `site/` to GitHub Pages on pushes to `main`.
